@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol"; // For ownership and admin control
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol"; // For reentrancy protection
 
-contract CombinedContract is Ownable, ReentrancyGuard {
+contract Adwumapa is Ownable, ReentrancyGuard {
 	IERC20 public stablecoin; // Stablecoin address
 	IERC20 public usdcToken; // USDC token address
 
