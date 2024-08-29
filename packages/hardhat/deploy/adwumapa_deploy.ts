@@ -1,10 +1,11 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
+import { Adwumapa__factory } from "../typechain-types";
 
 /**
- * Deploys a contract named "YourContract" using the deployer account and
- * constructor arguments set to the deployer address
+ * Deploys a contract named "Adwumapa" using the deployer account and
+ * constructor arguments set to the deployer address.
  *
  * @param hre HardhatRuntimeEnvironment object.
  */
@@ -22,10 +23,10 @@ const deployAdwumapa: DeployFunction = async function (hre: HardhatRuntimeEnviro
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("Adwumapa", {
+  const deploymentResult = await deploy("Adwumapa", {
     from: deployer,
     // Contract constructor arguments
-    args: [deployer],
+    args: [],
     log: true,
     // autoMine: can be passed to the deploy function to make the deployment process faster on local networks by
     // automatically mining the contract deployment transaction. There is no effect on live networks.
@@ -33,8 +34,9 @@ const deployAdwumapa: DeployFunction = async function (hre: HardhatRuntimeEnviro
   });
 
   // Get the deployed contract to interact with it after deploying.
-  const adwumapa = await hre.ethers.getContract<Contract>("Adwumapa", deployer);
-  console.log("👋 Initial greeting:", await adwumapa.greeting());
+  const signer = await hre.ethers.provider.getSigner(deployer);
+  const adwumapa = Adwumapa__factory.connect(deploymentResult.address, signer);
+  console.log("Contract deployed at:", deploymentResult.address);
 };
 
 export default deployAdwumapa;
