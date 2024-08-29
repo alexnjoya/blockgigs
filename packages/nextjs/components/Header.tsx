@@ -1,116 +1,96 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick } from "~~/hooks/scaffold-eth";
-
-type HeaderMenuLink = {
-  label: string;
-  href: string;
-  icon?: React.ReactNode;
-};
-
-export const menuLinks: HeaderMenuLink[] = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Debug Contracts",
-    href: "/debug",
-    icon: <BugAntIcon className="h-4 w-4" />,
-  },
-  {
-    label: "Subgraph",
-    href: "/subgraph",
-    icon: <MagnifyingGlassIcon className="h-4 w-4" />,
-  },
-];
-
-export const HeaderMenuLinks = () => {
-  const pathname = usePathname();
-
-  return (
-    <>
-      {menuLinks.map(({ label, href, icon }) => {
-        const isActive = pathname === href;
-        return (
-          <li key={href}>
-            <Link
-              href={href}
-              passHref
-              className={`${
-                isActive ? "bg-secondary shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
-            >
-              {icon}
-              <span>{label}</span>
-            </Link>
-          </li>
-        );
-      })}
-    </>
-  );
-};
+import React, { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 
 /**
  * Site header
  */
 export const Header = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const burgerMenuRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(
-    burgerMenuRef,
-    useCallback(() => setIsDrawerOpen(false), []),
-  );
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
-      <div className="navbar-start w-auto lg:w-1/2">
-        <div className="lg:hidden dropdown" ref={burgerMenuRef}>
-          <label
-            tabIndex={0}
-            className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
-            onClick={() => {
-              setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
-            }}
+    <nav className="w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center bg-[#ECF3FF]">
+      <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
+        <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AduwumaPa</h1>
+      </div>
+
+      <ul className="hidden lg:flex gap-6 w-[511px] h-[48px] mr-[10rem] items-center">
+        <li>
+          <a
+            className="font-montserrat text-[16px] text-[#2f66f6] font-extrabold leading-[24px] text-center"
+            href="#home"
           >
-            <Bars3Icon className="h-1/2" />
-          </label>
-          {isDrawerOpen && (
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              onClick={() => {
-                setIsDrawerOpen(false);
-              }}
-            >
-              <HeaderMenuLinks />
-            </ul>
+            Home
+          </a>
+        </li>
+        <li>
+          <a className="font-montserrat text-[16px] font-medium text-center text-[#696f8c]" href="#dashboard">
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a className="font-montserrat text-nowrap text-[16px] font-medium text-center text-[#696f8c]" href="#browse">
+            Browse Talents
+          </a>
+        </li>
+        <li>
+          <RainbowKitCustomConnectButton />
+        </li>
+      </ul>
+
+      {/* Mobile Toggle Button */}
+      <div className="lg:hidden flex justify-end items-center">
+        <button onClick={toggleNavbar}>
+          {mobileOpen ? (
+            <X className="text-[#2f66f6] font-medium" size={30} />
+          ) : (
+            <Menu className="text-[#2f66f6] font-medium" size={30} />
           )}
+        </button>
+      </div>
+
+      {/* Responsive state */}
+      {mobileOpen && (
+        <div className="fixed right-0 z-50 top-[4rem]  bg-[#ffffff] w-full h-full p-12 flex flex-col justify-center items-center lg:hidden transition-all duration-700 ease-in">
+          <ul className="flex flex-col items-center gap-6 mt-[-22rem]">
+            <li>
+              <a
+                className="font-montserrat text-[16px] text-[#2f66f6] font-extrabold leading-[24px] text-center"
+                href="#home"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a className="font-montserrat text-[16px] font-medium text-center text-[#696f8c]" href="#dashboard">
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a
+                className="font-montserrat text-nowrap text-[16px] font-medium text-center text-[#696f8c]"
+                href="#browse"
+              >
+                Browse Talents
+              </a>
+            </li>
+            <li>
+              <a
+                className="w-[174px] h-[48px] px-6 py-3 rounded-tl-[4px] bg-[#2F66F6] font-montserrat font-medium text-base leading-6 items-center text-[#ffffff] text-nowrap"
+                href="#connect"
+              >
+                Connect wallet
+              </a>
+            </li>
+          </ul>
         </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/logo.svg" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold leading-tight">Scaffold-ETH</span>
-            <span className="text-xs">Ethereum dev stack</span>
-          </div>
-        </Link>
-        <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
-          <HeaderMenuLinks />
-        </ul>
-      </div>
-      <div className="navbar-end flex-grow mr-4">
-        <RainbowKitCustomConnectButton />
-        <FaucetButton />
-      </div>
-    </div>
+      )}
+    </nav>
   );
 };
