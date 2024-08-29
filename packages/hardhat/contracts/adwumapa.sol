@@ -1,38 +1,38 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol"; // For ownership and admin control
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol"; // For reentrancy protection
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 contract Adwumapa is Ownable, ReentrancyGuard {
-	IERC20 public stablecoin; // Stablecoin address
-	IERC20 public usdcToken; // USDC token address
+	// Removed IERC20 public usdcToken;
 
-	constructor(address _stablecoin, address _usdcToken) Ownable() {
-		require(_stablecoin != address(0), "Invalid stablecoin address");
-		require(_usdcToken != address(0), "Invalid USDC address");
-		stablecoin = IERC20(_stablecoin);
-		usdcToken = IERC20(_usdcToken);
-	}
+	constructor() Ownable() {}
 
 	event PaymentProcessed(address indexed recipient, uint256 amount);
 	event PaymentWithdrawn(address indexed recipient, uint256 amount);
 	event EmergencyWithdrawal(address indexed to, uint256 amount);
-	event ProjectCreated(
-		uint256 projectId,
-		address employer,
-		address freelancer
+	event Deposit(address indexed sender, uint256 amount);
+	event PaymentReleased(
+		address indexed client,
+		address indexed freelancer,
+		uint256 amount
 	);
-	event MilestoneCompleted(uint256 projectId, uint256 milestoneId);
-	event PaymentReleased(uint256 projectId, uint256 milestoneId);
-	event DisputeRaised(uint256 projectId, uint256 milestoneId);
-	event DisputeResolved(
-		uint256 projectId,
-		uint256 milestoneId,
-		bool favorFreelancer
+	event ProjectCompleted(
+		address indexed client,
+		address indexed freelancer,
+		uint256 amount
 	);
-	event ProjectClosed(uint256 projectId);
+	event MilestoneCompleted(
+		address indexed client,
+		address indexed freelancer,
+		uint256 milestoneIndex,
+		uint256 amount
+	);
+
+	mapping(address => uint256) public clientBalances;
+	mapping(address => address) public clientFreelancer;
+	mapping(address => uint256[]) public clientMilestones; // New mapping for milestones
 
 	// Payment processing functions
 	function processPayment(
@@ -41,193 +41,98 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 	) external onlyOwner {
 		require(recipient != address(0), "Invalid recipient address");
 		require(amount > 0, "Amount must be greater than 0");
-		uint256 balance = stablecoin.balanceOf(address(this));
-		require(balance >= amount, "Insufficient contract balance");
-		stablecoin.transfer(recipient, amount);
+		require(
+			address(this).balance >= amount,
+			"Insufficient contract balance"
+		);
+		payable(recipient).transfer(amount);
 		emit PaymentProcessed(recipient, amount);
 	}
 
 	function withdraw(uint256 amount) external onlyOwner {
 		require(amount > 0, "Amount must be greater than 0");
-		uint256 balance = stablecoin.balanceOf(address(this));
-		require(balance >= amount, "Insufficient contract balance");
-		stablecoin.transfer(msg.sender, amount);
+		require(
+			address(this).balance >= amount,
+			"Insufficient contract balance"
+		);
+		payable(msg.sender).transfer(amount);
 		emit PaymentWithdrawn(msg.sender, amount);
 	}
 
 	function emergencyWithdraw(address to, uint256 amount) external onlyOwner {
 		require(to != address(0), "Invalid recipient address");
 		require(amount > 0, "Amount must be greater than 0");
-		uint256 balance = stablecoin.balanceOf(address(this));
-		require(balance >= amount, "Insufficient contract balance");
-		stablecoin.transfer(to, amount);
+		require(
+			address(this).balance >= amount,
+			"Insufficient contract balance"
+		);
+		payable(to).transfer(amount);
 		emit EmergencyWithdrawal(to, amount);
 	}
 
-	function updateStablecoin(address _stablecoin) external onlyOwner {
-		require(_stablecoin != address(0), "Invalid stablecoin address");
-		stablecoin = IERC20(_stablecoin);
+	// Function to deposit Ether into the contract
+	function deposit(address freelancer) external payable nonReentrant {
+		require(msg.value > 0, "Amount must be greater than 0");
+		require(freelancer != address(0), "Invalid freelancer address");
+		clientBalances[msg.sender] += msg.value;
+		clientFreelancer[msg.sender] = freelancer;
+		emit Deposit(msg.sender, msg.value);
 	}
 
-	// Project management functions
-	enum DisputeStatus {
-		None,
-		Raised,
-		Resolved
-	}
+	// Function to mark project as complete and release payment
+	function completeProject() external nonReentrant {
+		address freelancer = clientFreelancer[msg.sender];
+		uint256 amount = clientBalances[msg.sender];
 
-	struct Milestone {
-		uint256 amount;
-		bool isCompleted;
-		DisputeStatus disputeStatus;
-	}
-
-	struct Project {
-		address employer;
-		address freelancer;
-		uint256 milestoneCount;
-		mapping(uint256 => Milestone) milestones;
-		bool isActive;
-		bool isDisputed;
-		address arbitrator;
-	}
-
-	mapping(uint256 => Project) public projects;
-	uint256 public projectCount;
-
-	modifier onlyEmployer(uint256 projectId) {
-		require(msg.sender == projects[projectId].employer, "Not the employer");
-		_;
-	}
-
-	modifier onlyFreelancer(uint256 projectId) {
+		require(freelancer != address(0), "No freelancer assigned");
+		require(amount > 0, "No funds to release");
 		require(
-			msg.sender == projects[projectId].freelancer,
-			"Not the freelancer"
+			address(this).balance >= amount,
+			"Insufficient contract balance"
 		);
-		_;
+
+		clientBalances[msg.sender] = 0;
+		clientFreelancer[msg.sender] = address(0);
+		payable(freelancer).transfer(amount);
+		emit ProjectCompleted(msg.sender, freelancer, amount);
+		emit PaymentReleased(msg.sender, freelancer, amount);
 	}
 
-	modifier onlyArbitrator(uint256 projectId) {
-		require(
-			msg.sender == projects[projectId].arbitrator,
-			"Not the arbitrator"
-		);
-		_;
-	}
-
-	function createProject(
-		address _freelancer,
-		uint256[] calldata milestoneAmounts,
-		address _arbitrator
-	) external nonReentrant {
-		require(_arbitrator != address(0), "Invalid arbitrator address");
-		projectCount++;
-		Project storage project = projects[projectCount];
-		project.employer = msg.sender;
-		project.freelancer = _freelancer;
-		project.arbitrator = _arbitrator;
-		project.milestoneCount = milestoneAmounts.length;
-		project.isActive = true;
-
-		for (uint256 i = 0; i < milestoneAmounts.length; i++) {
-			project.milestones[i] = Milestone({
-				amount: milestoneAmounts[i],
-				isCompleted: false,
-				disputeStatus: DisputeStatus.None
-			});
-		}
-
-		emit ProjectCreated(projectCount, msg.sender, _freelancer);
-	}
-
-	function completeMilestone(
-		uint256 projectId,
-		uint256 milestoneId
-	) external onlyFreelancer(projectId) nonReentrant {
-		Project storage project = projects[projectId];
-		require(project.isActive, "Project is not active");
-		require(
-			!project.milestones[milestoneId].isCompleted,
-			"Milestone already completed"
-		);
-		require(
-			project.milestones[milestoneId].disputeStatus == DisputeStatus.None,
-			"Milestone is in dispute"
-		);
-		project.milestones[milestoneId].isCompleted = true;
-		emit MilestoneCompleted(projectId, milestoneId);
-	}
-
+	// Function to release payment when client is satisfied
 	function releasePayment(
-		uint256 projectId,
-		uint256 milestoneId
-	) external onlyEmployer(projectId) nonReentrant {
-		Project storage project = projects[projectId];
+		address freelancer,
+		uint256 amount
+	) external nonReentrant {
+		require(freelancer != address(0), "Invalid freelancer address");
+		require(amount > 0, "Amount must be greater than 0");
 		require(
-			project.milestones[milestoneId].isCompleted,
-			"Milestone not completed"
+			address(this).balance >= amount,
+			"Insufficient contract balance"
 		);
+		payable(freelancer).transfer(amount);
+		emit PaymentReleased(msg.sender, freelancer, amount);
+	}
+
+	// Function to mark milestone as complete and release payment
+	function completeMilestone(uint256 milestoneIndex) external nonReentrant {
+		address freelancer = clientFreelancer[msg.sender];
+		uint256 amount = clientMilestones[msg.sender][milestoneIndex];
+
+		require(freelancer != address(0), "No freelancer assigned");
+		require(amount > 0, "No funds to release");
 		require(
-			project.milestones[milestoneId].disputeStatus == DisputeStatus.None,
-			"Milestone is in dispute"
+			address(this).balance >= amount,
+			"Insufficient contract balance"
 		);
-		uint256 amount = project.milestones[milestoneId].amount;
-		usdcToken.transfer(project.freelancer, amount);
-		emit PaymentReleased(projectId, milestoneId);
+
+		clientMilestones[msg.sender][milestoneIndex] = 0;
+		payable(freelancer).transfer(amount);
+		emit MilestoneCompleted(msg.sender, freelancer, milestoneIndex, amount);
 	}
 
-	function raiseDispute(
-		uint256 projectId,
-		uint256 milestoneId
-	) external onlyEmployer(projectId) nonReentrant {
-		Project storage project = projects[projectId];
-		require(project.isActive, "Project is not active");
-		require(
-			project.milestones[milestoneId].isCompleted,
-			"Milestone not completed"
-		);
-		project.milestones[milestoneId].disputeStatus = DisputeStatus.Raised;
-		project.isDisputed = true;
-		emit DisputeRaised(projectId, milestoneId);
-	}
-
-	function resolveDispute(
-		uint256 projectId,
-		uint256 milestoneId,
-		bool favorFreelancer
-	) external onlyArbitrator(projectId) nonReentrant {
-		Project storage project = projects[projectId];
-		require(project.isDisputed, "No dispute to resolve");
-		if (favorFreelancer) {
-			uint256 amount = project.milestones[milestoneId].amount;
-			usdcToken.transfer(project.freelancer, amount);
-		}
-		project.milestones[milestoneId].disputeStatus = DisputeStatus.Resolved;
-		project.isDisputed = false;
-		emit DisputeResolved(projectId, milestoneId, favorFreelancer);
-	}
-
-	function closeProject(
-		uint256 projectId
-	) external onlyEmployer(projectId) nonReentrant {
-		Project storage project = projects[projectId];
-		require(project.isActive, "Project is not active");
-		require(
-			!project.isDisputed,
-			"Cannot close a project with an ongoing dispute"
-		);
-		project.isActive = false;
-		emit ProjectClosed(projectId);
-	}
-
-	// Function to allow owner to withdraw any ERC20 tokens mistakenly sent to the contract
-	function withdrawTokens(IERC20 token, uint256 amount) external onlyOwner {
-		token.transfer(owner(), amount);
-	}
-
-	// Function to allow owner to update the USDC token address if needed
-	function updateUsdcToken(address newUsdcToken) external onlyOwner {
-		usdcToken = IERC20(newUsdcToken);
+	// Function to add milestones
+	function addMilestone(uint256 amount) external {
+		require(amount > 0, "Amount must be greater than 0");
+		clientMilestones[msg.sender].push(amount);
 	}
 }
