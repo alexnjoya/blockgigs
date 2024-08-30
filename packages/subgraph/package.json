@@ -5,6 +5,7 @@
   "scripts": {
     "abi-copy": "node --loader ts-node/esm --experimental-specifier-resolution=node scripts/abi_copy.ts",
     "build": "graph build",
+    "chain": "hardhat node --network hardhat --no-deploy --hostname 0.0.0.0",
     "clean-node": "rm -rf graph-node/data/",
     "codegen": "graph codegen",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ GITHUB_USERNAME/your-contract",

@@ -1,26 +1,48 @@
 specVersion: 0.0.4
-description: Greetings
-repository: https://github.com/scaffold-eth/se-2/packages/subgraph/
 schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: YourContract
-    network: localhost
+    name: Adwumapa
+    network: optimism-sepolia
     source:
-      abi: YourContract
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+      address: "0xcc212a26B3Ae3E407453Eb53806a16A50795c803"
+      abi: Adwumapa
+      startBlock: 16603005
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Greeting
-        - Sender
+        - PaymentProcessed
+        - PaymentWithdrawn
+        - EmergencyWithdrawal
+        - Deposit
+        - PaymentReleased
+        - ProjectCompleted
+        - MilestoneCompleted
+        - ProjectCreated
+        - MilestoneAdded
       abis:
-        - name: YourContract
-          file: ./abis/localhost_YourContract.json
+        - name: Adwumapa
+          file: ./abis/Adwumapa.json
       eventHandlers:
-        - event: GreetingChange(indexed address,string,bool,uint256)
-          handler: handleGreetingChange
+        - event: PaymentProcessed(indexed address,uint256)
+          handler: handlePaymentProcessed
+        - event: PaymentWithdrawn(indexed address,uint256)
+          handler: handlePaymentWithdrawn
+        - event: EmergencyWithdrawal(indexed address,uint256)
+          handler: handleEmergencyWithdrawal
+        - event: Deposit(indexed address,uint256)
+          handler: handleDeposit
+        - event: PaymentReleased(indexed address,indexed address,uint256)
+          handler: handlePaymentReleased
+        - event: ProjectCompleted(indexed address,indexed address,uint256)
+          handler: handleProjectCompleted
+        - event: MilestoneCompleted(indexed address,indexed address,uint256,uint256)
+          handler: handleMilestoneCompleted
+        - event: ProjectCreated(indexed address,indexed address,uint256)
+          handler: handleProjectCreated
+        - event: MilestoneAdded(indexed address,uint256,uint256)
+          handler: handleMilestoneAdded
       file: ./src/mapping.ts

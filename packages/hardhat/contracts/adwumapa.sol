@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-//0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+//0xcc212a26B3Ae3E407453Eb53806a16A50795c803
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -9,7 +9,9 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 contract Adwumapa is Ownable, ReentrancyGuard {
 	// Removed IERC20 public usdcToken;
 
-	constructor() Ownable() {}
+	constructor() Ownable() {
+		require(msg.sender != address(0), "Invalid address");
+	}
 
 	event PaymentProcessed(address indexed recipient, uint256 amount);
 	event PaymentWithdrawn(address indexed recipient, uint256 amount);
@@ -31,6 +33,8 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 		uint256 milestoneIndex,
 		uint256 amount
 	);
+	event ProjectCreated(address indexed client, address indexed freelancer, uint256 amount);
+	event MilestoneAdded(address indexed client, uint256 milestoneIndex, uint256 amount);
 
 	mapping(address => uint256) public clientBalances;
 	mapping(address => address) public clientFreelancer;
@@ -132,9 +136,22 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 		emit MilestoneCompleted(msg.sender, freelancer, milestoneIndex, amount);
 	}
 
+	// Function to create a new project
+	function createProject(address freelancer, uint256 amount) external payable nonReentrant {
+		require(freelancer != address(0), "Invalid freelancer address");
+		require(amount > 0, "Amount must be greater than 0");
+		require(msg.value == amount, "Sent value must match the project amount");
+
+		clientBalances[msg.sender] += msg.value;
+		clientFreelancer[msg.sender] = freelancer;
+		emit ProjectCreated(msg.sender, freelancer, amount);
+	}
+
 	// Function to add milestones
 	function addMilestone(uint256 amount) external {
 		require(amount > 0, "Amount must be greater than 0");
 		clientMilestones[msg.sender].push(amount);
+		uint256 milestoneIndex = clientMilestones[msg.sender].length - 1;
+		emit MilestoneAdded(msg.sender, milestoneIndex, amount);
 	}
 }
