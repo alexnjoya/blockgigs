@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Line2 from "./assets/line2.svg";
 import Line from "./assets/line.svg";
+import { NextPage } from "next";
 
-const Page: React.FC = () => {
+const Page: NextPage = () => {
   const [next, setNext] = useState(false);
   return (
     <div className="pt-[50px] md:px-16 lg:px-24 w-full bg-white">
