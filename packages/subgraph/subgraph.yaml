@@ -6,9 +6,8 @@ dataSources:
     name: Adwumapa
     network: optimism-sepolia
     source:
-      address: "0xcc212a26B3Ae3E407453Eb53806a16A50795c803"
       abi: Adwumapa
-      startBlock: 16603005
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -22,7 +21,6 @@ dataSources:
         - ProjectCompleted
         - MilestoneCompleted
         - ProjectCreated
-        - MilestoneAdded
       abis:
         - name: Adwumapa
           file: ./abis/Adwumapa.json
@@ -41,8 +39,7 @@ dataSources:
           handler: handleProjectCompleted
         - event: MilestoneCompleted(indexed address,indexed address,uint256,uint256)
           handler: handleMilestoneCompleted
-        - event: ProjectCreated(indexed address,indexed address,uint256)
+        - event: ProjectCreated(indexed
+            address,uint256,string,string,(uint256,uint256,string)[],uint256,uint256,string)
           handler: handleProjectCreated
-        - event: MilestoneAdded(indexed address,uint256,uint256)
-          handler: handleMilestoneAdded
       file: ./src/mapping.ts

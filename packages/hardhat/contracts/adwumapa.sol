@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-//0xcc212a26B3Ae3E407453Eb53806a16A50795c803
-
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
@@ -11,6 +9,12 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 
 	constructor() Ownable() {
 		require(msg.sender != address(0), "Invalid address");
+	}
+
+	struct Milestone {
+		uint256 id;
+		uint256 amount;
+		string description;
 	}
 
 	event PaymentProcessed(address indexed recipient, uint256 amount);
@@ -33,8 +37,16 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 		uint256 milestoneIndex,
 		uint256 amount
 	);
-	event ProjectCreated(address indexed client, address indexed freelancer, uint256 amount);
-	event MilestoneAdded(address indexed client, uint256 milestoneIndex, uint256 amount);
+	event ProjectCreated(
+		address indexed client,
+		uint256 amount,
+		string title,
+		string description,
+		Milestone[] milestones,
+		uint256 startDate,
+		uint256 endDate,
+		string revisionPolicy
+	);
 
 	mapping(address => uint256) public clientBalances;
 	mapping(address => address) public clientFreelancer;
@@ -136,22 +148,40 @@ contract Adwumapa is Ownable, ReentrancyGuard {
 		emit MilestoneCompleted(msg.sender, freelancer, milestoneIndex, amount);
 	}
 
-	// Function to create a new project
-	function createProject(address freelancer, uint256 amount) external payable nonReentrant {
-		require(freelancer != address(0), "Invalid freelancer address");
+	function createProject(
+		uint256 amount,
+		string memory title,
+		string memory description,
+		Milestone[] memory milestones,
+		uint256 startDate,
+		uint256 endDate,
+		string memory revisionPolicy
+	) external payable nonReentrant {
 		require(amount > 0, "Amount must be greater than 0");
-		require(msg.value == amount, "Sent value must match the project amount");
+		require(
+			msg.value == amount,
+			"Sent value must match the project amount"
+		);
+
+		uint256 totalMilestoneAmount = 0;
+		for (uint256 i = 0; i < milestones.length; i++) {
+			totalMilestoneAmount += milestones[i].amount;
+		}
+		require(
+			totalMilestoneAmount == amount,
+			"Milestones total must match project amount"
+		);
 
 		clientBalances[msg.sender] += msg.value;
-		clientFreelancer[msg.sender] = freelancer;
-		emit ProjectCreated(msg.sender, freelancer, amount);
-	}
-
-	// Function to add milestones
-	function addMilestone(uint256 amount) external {
-		require(amount > 0, "Amount must be greater than 0");
-		clientMilestones[msg.sender].push(amount);
-		uint256 milestoneIndex = clientMilestones[msg.sender].length - 1;
-		emit MilestoneAdded(msg.sender, milestoneIndex, amount);
+		emit ProjectCreated(
+			msg.sender,
+			amount,
+			title,
+			description,
+			milestones,
+			startDate,
+			endDate,
+			revisionPolicy
+		);
 	}
 }

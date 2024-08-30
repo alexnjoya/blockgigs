@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Adwumapa: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707",
       abi: [
         {
           inputs: [],
@@ -50,31 +50,6 @@ const deployedContracts = {
             },
           ],
           name: "EmergencyWithdrawal",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "milestoneIndex",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "MilestoneAdded",
           type: "event",
         },
         {
@@ -225,33 +200,67 @@ const deployedContracts = {
               type: "address",
             },
             {
-              indexed: true,
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
               indexed: false,
               internalType: "uint256",
               name: "amount",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+              ],
+              indexed: false,
+              internalType: "struct Adwumapa.Milestone[]",
+              name: "milestones",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
+            },
           ],
           name: "ProjectCreated",
           type: "event",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "addMilestone",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
         },
         {
           inputs: [
@@ -338,14 +347,56 @@ const deployedContracts = {
         {
           inputs: [
             {
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
               internalType: "uint256",
               name: "amount",
               type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Adwumapa.Milestone[]",
+              name: "milestones",
+              type: "tuple[]",
+            },
+            {
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
             },
           ],
           name: "createProject",
@@ -472,7 +523,7 @@ const deployedContracts = {
   },
   11155420: {
     Adwumapa: {
-      address: "0xcc212a26B3Ae3E407453Eb53806a16A50795c803",
+      address: "0xB16Ec0D24672A1e6937A5F2D378255A356372924",
       abi: [
         {
           inputs: [],
@@ -515,31 +566,6 @@ const deployedContracts = {
             },
           ],
           name: "EmergencyWithdrawal",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "milestoneIndex",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "MilestoneAdded",
           type: "event",
         },
         {
@@ -690,33 +716,67 @@ const deployedContracts = {
               type: "address",
             },
             {
-              indexed: true,
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
               indexed: false,
               internalType: "uint256",
               name: "amount",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+              ],
+              indexed: false,
+              internalType: "struct Adwumapa.Milestone[]",
+              name: "milestones",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
+            },
           ],
           name: "ProjectCreated",
           type: "event",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "addMilestone",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
         },
         {
           inputs: [
@@ -803,14 +863,56 @@ const deployedContracts = {
         {
           inputs: [
             {
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
               internalType: "uint256",
               name: "amount",
               type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+              ],
+              internalType: "struct Adwumapa.Milestone[]",
+              name: "milestones",
+              type: "tuple[]",
+            },
+            {
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
             },
           ],
           name: "createProject",
