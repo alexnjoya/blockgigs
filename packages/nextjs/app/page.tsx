@@ -2,6 +2,7 @@
 
 import Featured from "./_components/featured";
 import Hero from "./_components/hero";
+import HowItWorks from "./_components/how-it-works";
 import Services from "./_components/services";
 import type { NextPage } from "next";
 
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
 
       <Services />
       <Featured />
+      <HowItWorks />
     </div>
   );
 };
