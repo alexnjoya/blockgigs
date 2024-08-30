@@ -1,6 +1,7 @@
 "use client";
 
 // @refresh reset
+import { useRouter } from "next/navigation";
 import { Balance } from "../Balance";
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { AddressQRCodeModal } from "./AddressQRCodeModal";
@@ -17,7 +18,7 @@ import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 export const RainbowKitCustomConnectButton = () => {
   const networkColor = useNetworkColor();
   const { targetNetwork } = useTargetNetwork();
-
+  const router = useRouter();
   return (
     <ConnectButton.Custom>
       {({ account, chain, openConnectModal, mounted }) => {
@@ -41,6 +42,9 @@ export const RainbowKitCustomConnectButton = () => {
                 return <WrongNetworkDropdown />;
               }
 
+              if (connected) {
+                router.push("/profile-setup");
+              }
               return (
                 <>
                   <div className="flex flex-col items-center mr-1">
