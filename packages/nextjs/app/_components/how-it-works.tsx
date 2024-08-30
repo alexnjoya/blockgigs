@@ -4,7 +4,7 @@ import Howimage2 from "../assets/howimage2.png";
 
 const HowItWorks = () => {
   return (
-    <div className="mt-[100px] md:px-16 lg:px-24 w-full">
+    <div className="mt-[100px] md:px-16 lg:px-24 w-full mb-[50px]">
       <div className="flex flex-col justify-center items-center ">
         <div className="text-center max-w-[448px]">
           <h2 className="text-[36px] font-[600] text-[#0A0F29]">How AdwumaPa works</h2>
