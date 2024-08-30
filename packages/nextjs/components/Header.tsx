@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 
 /**
  * Site header
@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <nav className="w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center bg-[#ECF3FF]">
       <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
-        <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AduwumaPa</h1>
+        <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
       </div>
 
       <ul className="hidden lg:flex gap-6 w-[511px] h-[48px] mr-[10rem] items-center">
@@ -41,6 +41,7 @@ export const Header = () => {
         </li>
         <li>
           <RainbowKitCustomConnectButton />
+          <FaucetButton />
         </li>
       </ul>
 
@@ -81,12 +82,7 @@ export const Header = () => {
               </a>
             </li>
             <li>
-              <a
-                className="w-[174px] h-[48px] px-6 py-3 rounded-tl-[4px] bg-[#2F66F6] font-montserrat font-medium text-base leading-6 items-center text-[#ffffff] text-nowrap"
-                href="#connect"
-              >
-                Connect wallet
-              </a>
+              <RainbowKitCustomConnectButton />
             </li>
           </ul>
         </div>
