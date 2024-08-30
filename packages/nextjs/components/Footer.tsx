@@ -1,79 +1,44 @@
-import React from "react";
-import Link from "next/link";
-import { hardhat } from "viem/chains";
-import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { HeartIcon } from "@heroicons/react/24/outline";
-import { SwitchTheme } from "~~/components/SwitchTheme";
-import { BuidlGuidlLogo } from "~~/components/assets/BuidlGuidlLogo";
-import { Faucet } from "~~/components/scaffold-eth";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
-import { useGlobalState } from "~~/services/store/store";
-
 /**
  * Site footer
  */
 export const Footer = () => {
-  const nativeCurrencyPrice = useGlobalState(state => state.nativeCurrency.price);
-  const { targetNetwork } = useTargetNetwork();
-  const isLocalNetwork = targetNetwork.id === hardhat.id;
-
   return (
-    <div className="min-h-0 py-5 px-1 mb-11 lg:mb-0">
-      <div>
-        <div className="fixed flex justify-between items-center w-full z-10 p-4 bottom-0 left-0 pointer-events-none">
-          <div className="flex flex-col md:flex-row gap-2 pointer-events-auto">
-            {nativeCurrencyPrice > 0 && (
-              <div>
-                <div className="btn btn-primary btn-sm font-normal gap-1 cursor-auto">
-                  <CurrencyDollarIcon className="h-4 w-4" />
-                  <span>{nativeCurrencyPrice.toFixed(2)}</span>
-                </div>
+    <div className="bg-[#0A0F29] text-white md:px-16 lg:px-24 w-full">
+      <div className="bg-[#0A0F29] h-[500px] text-white flex flex-col justify-center items-center">
+        <div className="max-w-[544px] mx-auto text-center">
+          <h1 className="font-[700] text-[54px]">
+            Get started <span className="text-[#2F66F6]">today</span>
+          </h1>
+          <p className="text-[18px] font-normal">Connecting Talent, Transcending Boundaries</p>
+          <div>
+            <form className="max-w-md mx-auto">
+              <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">email</label>
+              <div className="relative">
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full p-4 ps-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Add email"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="text-white absolute end-2.5 bottom-2.5 bg-[#2F66F6] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Subscribe
+                </button>
               </div>
-            )}
-            {isLocalNetwork && (
-              <>
-                <Faucet />
-                <Link href="/blockexplorer" passHref className="btn btn-primary btn-sm font-normal gap-1">
-                  <MagnifyingGlassIcon className="h-4 w-4" />
-                  <span>Block Explorer</span>
-                </Link>
-              </>
-            )}
+            </form>
           </div>
-          <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
         </div>
       </div>
-      <div className="w-full">
-        <ul className="menu menu-horizontal w-full">
-          <div className="flex justify-center items-center gap-2 text-sm w-full">
-            <div className="text-center">
-              <a href="https://github.com/scaffold-eth/se-2" target="_blank" rel="noreferrer" className="link">
-                Fork me
-              </a>
-            </div>
-            <span>·</span>
-            <div className="flex justify-center items-center gap-2">
-              <p className="m-0 text-center">
-                Built with <HeartIcon className="inline-block h-4 w-4" /> at
-              </p>
-              <a
-                className="flex justify-center items-center gap-1"
-                href="https://buidlguidl.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <BuidlGuidlLogo className="w-3 h-5 pb-1" />
-                <span className="link">BuidlGuidl</span>
-              </a>
-            </div>
-            <span>·</span>
-            <div className="text-center">
-              <a href="https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA" target="_blank" rel="noreferrer" className="link">
-                Support
-              </a>
-            </div>
-          </div>
-        </ul>
+      <hr />
+      <div className="flex justify-between items-center py-5">
+        <h2 className="font-oleo font-[700] text-[31.33px]">AdwumaPa</h2>
+        <div className="flex space-x-4">
+          <p className="text-[16px] font-[500]">Privacy Policy</p>
+          <p className="text-[16px] font-[500]">Terms and conditions</p>
+        </div>
       </div>
     </div>
   );
