@@ -1,5 +1,6 @@
 "use client";
 
+import Featured from "./_components/featured";
 import Hero from "./_components/hero";
 import Services from "./_components/services";
 import type { NextPage } from "next";
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       </div>
 
       <Services />
+      <Featured />
     </div>
   );
 };

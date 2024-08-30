@@ -22,13 +22,14 @@ const Services = () => {
     },
   ];
   return (
-    <div className="mt-[50px] md:px-16 lg:px-24">
-      <div className="text-center">
-        <h2 className="text-[36px] font-[600] text-[#0A0F29]">Why Choose AdwumPa?</h2>
-        <p className="text-[18px] font-normal">
-          Find top African tech talents, hire anonymously,
-          <br /> and pay securely in crypto.
-        </p>
+    <div className="mt-[50px] md:px-16 lg:px-24 w-full">
+      <div className="flex flex-col justify-center items-center">
+        <div className="text-center max-w-[460px]">
+          <h2 className="text-[36px] font-[600] text-[#0A0F29]">Why Choose AdwumPa?</h2>
+          <p className="text-[18px] font-normal">
+            Find top African tech talents, hire anonymously, and pay securely in crypto.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 mt-16">
