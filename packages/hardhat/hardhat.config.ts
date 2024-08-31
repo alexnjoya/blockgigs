@@ -118,12 +118,19 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.publicgoods.network",
       accounts: [deployerPrivateKey],
     },
+    // for testnet
+    "lisk-sepolia": {
+      url: "https://rpc.sepolia-api.lisk.com",
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY as string],
+      gasPrice: 1000000000,
+    },
   },
   // configuration for hardhat-verify plugin
   etherscan: {
     apiKey: {
       optimismSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
     },
+
     customChains: [
       {
         network: "optimismSepolia",

@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Adwumapa
-    network: localhost
+    network: optimismSepolia
     source:
       abi: Adwumapa
       address: "0xB16Ec0D24672A1e6937A5F2D378255A356372924"
