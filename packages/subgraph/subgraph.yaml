@@ -7,7 +7,7 @@ dataSources:
     network: optimism-sepolia
     source:
       abi: Adwumapa
-      address: "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707"
+      address: "0xB16Ec0D24672A1e6937A5F2D378255A356372924"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6

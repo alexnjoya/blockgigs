@@ -17,7 +17,9 @@ export const Header = () => {
   return (
     <nav className="w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center bg-[#ECF3FF]">
       <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
-        <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
+        <a href="http://localhost:3000">
+          <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
+        </a>
       </div>
 
       <ul className="hidden lg:flex gap-6 w-[511px] h-[48px] mr-[10rem] items-center">
