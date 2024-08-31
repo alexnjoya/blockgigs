@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 
@@ -8,6 +9,7 @@ import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaff
  * Site header
  */
 export const Header = () => {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleNavbar = () => {
@@ -15,7 +17,11 @@ export const Header = () => {
   };
 
   return (
-    <nav className="w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center bg-[#ECF3FF]">
+    <nav
+      className={`w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center ${
+        pathname == "/dashboard" ? "bg-white shadow-sm" : "bg-[#ECF3FF]"
+      }`}
+    >
       <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
         <a href="https://adwumapa-nextjs.vercel.app/">
           <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
