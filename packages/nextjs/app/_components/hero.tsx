@@ -53,7 +53,7 @@ const Hero = () => {
         <div className="w-[368px] h-[48px] gap-6 flex justify-between items-center">
           <a
             className="w-[180px] h-[43px] lg:w-[193px] lg:h-[48px] px-6 py-3 gap-2 rounded-tl-[4px] rounded-tr-none rounded-br-none rounded-bl-none bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center"
-            href="http://localhost:3000/profile-setup"
+            href="https://adwumapa-nextjs.vercel.app/profile-setup"
           >
             Sign Up as Talent
           </a>

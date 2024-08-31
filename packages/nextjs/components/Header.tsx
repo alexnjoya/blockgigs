@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <nav className="w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center bg-[#ECF3FF]">
       <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
-        <a href="http://localhost:3000">
+        <a href="https://adwumapa-nextjs.vercel.app/">
           <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
         </a>
       </div>
