@@ -1,4 +1,5 @@
-AdwumaPa: Empowering African Tech Talent Through Blockchain Innovation
+#AdwumaPa
+Empowering African Tech Talent Through Blockchain Innovation
 
 AdwumaPa is a cutting-edge, blockchain-powered platform designed to revolutionize the way African tech professionals connect with global opportunities. By leveraging the power of distributed ledger technology, we've created a secure, transparent, and efficient marketplace that puts talent first.
 
