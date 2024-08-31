@@ -42,7 +42,7 @@ Browse our variety of opportunities tailored to fit your skills. Ditch the detai
 You set the pace. You call the shots, you choose how and when you will get paid
 
 
-Key Features:
+## Key Features of Adwumapa
 
 1. Anonymous Project Matching: Our platform allows skilled African developers, designers, and tech professionals to showcase their abilities and secure projects without revealing personal information, ensuring a bias-free selection process based purely on merit.
 
