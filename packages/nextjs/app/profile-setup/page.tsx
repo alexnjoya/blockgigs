@@ -4,10 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 import Line2 from "./assets/line2.svg";
 import Line from "./assets/line.svg";
+import Modal from "./modal/modal";
 import { NextPage } from "next";
 
 const Page: NextPage = () => {
   const [next, setNext] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="pt-[50px] md:px-16 lg:px-24 w-full bg-white">
       <div className="flex flex-col justify-center items-center ">
@@ -116,16 +118,17 @@ const Page: NextPage = () => {
                 className="w-full h-[48px] rounded-[8px] px-4 border shadow-sm"
               />
             </div>
-
             <div
               className="w-full h-[24px] lg:h-[48px] mt-10 mb-14 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer"
-              onClick={() => setNext(true)}
+              onClick={() => setShowModal(true)}
             >
               Set up account
             </div>
           </div>
         </div>
       )}
+
+      <Modal isVisible={showModal} setShowModal={setShowModal} />
     </div>
   );
 };
