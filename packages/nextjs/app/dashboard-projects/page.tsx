@@ -2,7 +2,7 @@
 
 import type { NextPage } from "next";
 
-const Dashboard: NextPage = () => {
+const DashboardProjects: NextPage = () => {
   return (
     <div className="bg-white">
       <div className=" text-[#2F66F6] text-left text-[24px] font-bold mx-6">Dashboard</div>
@@ -68,4 +68,4 @@ const Dashboard: NextPage = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardProjects;

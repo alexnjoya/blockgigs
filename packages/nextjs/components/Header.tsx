@@ -32,7 +32,7 @@ export const Header = () => {
           </a>
         </li>
         <li>
-          <a className="font-montserrat text-[16px] font-medium text-center text-[#696f8c]" href="#dashboard">
+          <a className="font-montserrat text-[16px] font-medium text-center text-[#696f8c]" href="/dashboard">
             Dashboard
           </a>
         </li>

@@ -2,7 +2,7 @@
 
 import type { NextPage } from "next";
 
-const Dashboard: NextPage = () => {
+const DashboardReviews: NextPage = () => {
   return (
     <div className="bg-white">
       <div className=" text-[#2F66F6] text-left text-[24px] font-bold mx-6">Dashboard</div>
@@ -44,28 +44,28 @@ const Dashboard: NextPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-3 mt-16 mx-4 mb-4">
         <div className="bg-white border-[#D7D9E4] border-2 rounded-lg p-2">
           <p className="text-[#0A0F29] ">
-            Pseudonymous Name: Kovács Lajos
-            <br />
-            Email: Kovács Lajos@gmail.com
-            <br />
-            Tags That Best Describe Skill: Smart Contracts, DeFi Development, NFT Integration
-            <br />
-            Skills and Talents: Smart Contracts, DeFi Development, NFT Integration
+            Kovacs exceeded our expectations with the development of our decentralized voting system. He has a deep
+            understanding of blockchain development
           </p>
+          <h1 className="text-[#0A0F29]">Freida Varnes</h1>
         </div>
         <div className="bg-white border-[#D7D9E4] border-2 rounded-lg p-2">
           <p className="text-[#0A0F29] ">
-            Level of Experience: Intermediate
-            <br />
-            Wallet:
-            <br />
-            Previous Projects: Ethereum-based DeFi Platform Description: Led the development of a DeFi platform that
-            allows users to stake and earn rewards in ETH. Integrated multiple DeFi protocols for seamless interaction.
+            Working with Kovacs was a fantastic experience. He successfully built a cross-chain token swap platform that
+            is both secured and user-friendly
           </p>
+          <h1 className="text-[#0A0F29] ">Kristin Watson</h1>
+        </div>
+        <div className="bg-white border-[#D7D9E4] border-2 rounded-lg p-2">
+          <p className="text-[#0A0F29]">
+            Kovacs played a crucial role in developing a DAO governance platform. He successfully built a cross-chain
+            His attention to details amd innovative solutions helped us to create a robust and transparent platform.
+          </p>
+          <h1 className="text-[#0A0F29]">Charolette Hanlin</h1>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardReviews;
