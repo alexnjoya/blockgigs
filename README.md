@@ -60,3 +60,28 @@ You set the pace. You call the shots, you choose how and when you will get paid
 By choosing AdwumaPa, businesses gain access to a pool of highly skilled, vetted African tech professionals, while talented individuals unlock a world of opportunities without geographical constraints. Our mission is to empower African tech talent, drive innovation, and contribute to the continent's digital transformation.
 
 Join AdwumaPa today and be part of the future of work – where talent knows no borders, and innovation knows no bounds.
+Technology stack
+
+GitHub Link: https://github.com/alexnjoya/adwumapa.git
+
+
+
+Deployed dApp: https://adwumapa-nextjs.vercel.app/
+
+
+
+Deployed contract address: 0xB16Ec0D24672A1e6937A5F2D378255A356372924
+
+view on: https://sepolia-optimism.etherscan.io/
+
+
+
+Figma files: https://www.figma.com/design/R06mq4LFFKVxzYZnQuE0gQ/Adwumapa?node-id=2-2&t=jV9611htIAlDHZ3C-1 
+
+
+
+Pitch Deck: https://drive.google.com/file/d/14q9S3oJsB0h0V9Us8VBOOyP_nBMio4Nt/view?usp=sharing 
+
+
+
+The Graph Query Link: https://api.studio.thegraph.com/query/86127/adwumapa/version/latest 
