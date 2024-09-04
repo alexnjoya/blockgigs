@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import DataTable from "../_components/table";
 import Avatar1 from "../assets/Avartar1.png";
 import type { NextPage } from "next";
 
@@ -53,26 +54,8 @@ const DashboardProjects: NextPage = () => {
           <h3 className="text-[#696F8C] text-[24px] font-[600] text-center">Reviews</h3>
         </a>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-3 mt-6 mb-10">
-        <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px] text-justify">
-            Kovacs exceeded our expectations with the development of our decentralized voting system. He has a deep
-            understanding of blockchain development
-          </p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px] text-justify">
-            Working with Kovacs was a fantastic experience. He successfully built a cross-chain token swap platform that
-            is both secured and user-friendly
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px] text-justify">
-            Kovacs played a crucial role in developing a DAO governance platform. He successfully built a cross-chain
-            His attention to details amd innovative solutions helped us to create a robust and transparent platform.
-          </p>
-        </div>
+      <div>
+        <DataTable />
       </div>
     </div>
   );
