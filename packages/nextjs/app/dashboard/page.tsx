@@ -131,22 +131,30 @@ const Dashboard: NextPage = () => {
               <TableRow>
                 <TableCell>
                   {projects.map(project => (
-                    <h3 key={project.title}>{project.title}</h3>
+                    <h3 key={project.title} className="text-[16px] font-[700] text-[#0A0F29] mb-6">
+                      {project.title}
+                    </h3>
                   ))}
                 </TableCell>
                 <TableCell>
                   {projects.map(project => (
-                    <h3 key={project.title}>{project.milestone}</h3>
+                    <h3 key={project.title} className="font-[500] text-[#0A0F29] mb-6 text-[16px]">
+                      {project.milestone}
+                    </h3>
                   ))}
                 </TableCell>
                 <TableCell>
                   {projects.map(project => (
-                    <h3 key={project.title}>{project.client}</h3>
+                    <h3 key={project.title} className="font-[500] text-[#0A0F29] mb-6 text-[16px]">
+                      {project.client}
+                    </h3>
                   ))}
                 </TableCell>
                 <TableCell>
                   {projects.map(project => (
-                    <h3 key={project.title}>View details</h3>
+                    <h3 key={project.title} className="font-[700] text-[#2F66F6] mb-6 text-[16px] cursor-pointer">
+                      View details
+                    </h3>
                   ))}
                 </TableCell>
               </TableRow>
