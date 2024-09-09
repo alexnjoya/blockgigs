@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Avatar1 from "../assets/Avartar1.png";
+import Star from "../assets/stars.png";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./_components/ui/tabs";
 import type { NextPage } from "next";
 
@@ -37,7 +38,9 @@ const Dashboard: NextPage = () => {
         <div className="bg-white border-[#D7D9E4] border rounded-lg shadow-md p-6">
           <h3 className="text-[#0A0F29] text-[16px] font-[500] text-left">Total ratings</h3>
           <div className="flex flex-row justify-between items-center mt-4">
-            <h3 className="text-[#0A0F29] text-[24px] text-center font-[600]">102</h3>
+            <div>
+              <Image src={Star} alt="stars" />
+            </div>
             <h3 className="text-[#0A0F29] text-[12px] text-center font-normal">3 vs last month</h3>
           </div>
         </div>
