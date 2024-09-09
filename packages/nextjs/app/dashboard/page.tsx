@@ -43,59 +43,57 @@ const Dashboard: NextPage = () => {
         </div>
       </div>
 
-      <Tabs defaultValue="account" className="w-[400px]">
+      <Tabs defaultValue="details" className="mt-12">
         <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger value="details" className="text-[24px] font-[600] text-center">
+            More Details
+          </TabsTrigger>
+          <TabsTrigger value="projects" className=" text-[24px] font-[600] text-center">
+            All Projects
+          </TabsTrigger>
+          <TabsTrigger value="reviews" className=" text-[24px] font-[600] text-center">
+            Reviews
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="account">Make changes to your account here.</TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
+        <TabsContent value="details">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6 mb-10">
+            <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
+              <p className="text-[#0A0F29] text-[18px]">
+                <span className="font-[600]">Pseudonymous Name:</span> Kovács Lajos
+              </p>
+              <p>
+                <span className="font-[600]">Email:</span> Kovács Lajos@gmail.com
+              </p>
+              <p>
+                <span className="font-[600]">Tags That Best Describe Skill:</span> Smart Contracts, DeFi Development,
+                NFT Integration
+              </p>
+              <p>
+                <span className="font-[600]">Skills and Talents:</span> Smart Contracts, DeFi Development, NFT
+                Integration
+              </p>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
+              <p className="text-[#0A0F29] text-[18px]">
+                <span className="font-[600]">Level of Experience:</span> Intermediate
+              </p>
+              <p>
+                <span className="font-[600]">Wallet:</span> 0x1622jduwcg7744894ihbjc4
+              </p>
+              <p>
+                <span className="font-[600]">Previous Projects:</span> Ethereum-based DeFi Platform
+              </p>
+              <p>
+                <span className="font-[600]">Description:</span> Led the development of a DeFi platform that allows
+                users to stake and earn rewards in ETH. Integrated multiple DeFi protocols for seamless interaction.
+              </p>
+            </div>
+          </div>
+        </TabsContent>
+        <TabsContent value="projects">Change your password here.</TabsContent>
+        <TabsContent value="reviews">Change your password here.</TabsContent>
       </Tabs>
-
-      <div className="flex flex-row gap-10 mt-12">
-        <a href="/">
-          <h3 className="text-[#0A0F29] text-[24px] font-[600] text-center">More Details</h3>
-        </a>
-        <a href="/dashboard-projects">
-          <h3 className="text-[#696F8C] text-[24px] font-[600] text-center">All Projects</h3>
-        </a>
-        <a href="/dashboard-reviews">
-          <h3 className="text-[#696F8C] text-[24px] font-[600] text-center">Reviews</h3>
-        </a>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6 mb-10">
-        <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px]">
-            <span className="font-[600]">Pseudonymous Name:</span> Kovács Lajos
-          </p>
-          <p>
-            <span className="font-[600]">Email:</span> Kovács Lajos@gmail.com
-          </p>
-          <p>
-            <span className="font-[600]">Tags That Best Describe Skill:</span> Smart Contracts, DeFi Development, NFT
-            Integration
-          </p>
-          <p>
-            <span className="font-[600]">Skills and Talents:</span> Smart Contracts, DeFi Development, NFT Integration
-          </p>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px]">
-            <span className="font-[600]">Level of Experience:</span> Intermediate
-          </p>
-          <p>
-            <span className="font-[600]">Wallet:</span> 0x1622jduwcg7744894ihbjc4
-          </p>
-          <p>
-            <span className="font-[600]">Previous Projects:</span> Ethereum-based DeFi Platform
-          </p>
-          <p>
-            <span className="font-[600]">Description:</span> Led the development of a DeFi platform that allows users to
-            stake and earn rewards in ETH. Integrated multiple DeFi protocols for seamless interaction.
-          </p>
-        </div>
-      </div>
     </div>
   );
 };
