@@ -52,10 +52,6 @@
     "node": ">=18.17.0"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.0.2",
-    "lucide-react": "^0.436.0",
-    "se-2": "file:"
+    "lucide-react": "^0.439.0"
   }
 }
