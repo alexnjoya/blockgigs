@@ -10,6 +10,11 @@ import { NextPage } from "next";
 const Page: NextPage = () => {
   const [next, setNext] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  const onSubmit = () => {
+    localStorage.setItem("signedIn", "true");
+    setShowModal(true);
+  };
   return (
     <div className="pt-[50px] md:px-16 lg:px-24 w-full bg-white">
       <div className="flex flex-col justify-center items-center ">
@@ -20,7 +25,7 @@ const Page: NextPage = () => {
       </div>
 
       {!next && (
-        <div className="flex justify-center items-center">
+        <form className="flex justify-center items-center">
           <div className="max-w-[550px]">
             <div>
               <p className="text-[18px]">Step 1 of 2</p>
@@ -31,6 +36,7 @@ const Page: NextPage = () => {
               <input
                 placeholder="Add a pseudonymous name"
                 className="w-full h-[48px] rounded-[8px] px-4 border shadow-sm"
+                required
               />
             </div>
             <div className="mt-5">
@@ -52,19 +58,20 @@ const Page: NextPage = () => {
               <input placeholder="Your work history" className="w-full h-[48px] rounded-[8px] px-4 border shadow-sm" />
             </div>
 
-            <div
+            <button
+              type="submit"
               className="w-full h-[24px] lg:h-[48px] mt-10 mb-14 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer"
               onClick={() => setNext(true)}
             >
               Continue
-            </div>
+            </button>
           </div>
-        </div>
+        </form>
       )}
 
       {next && (
         <div className="flex justify-center items-center">
-          <div className="max-w-[550px]">
+          <div className="max-w-[430px]">
             <div>
               <p className="text-[18px]">Step 2 of 2</p>
               <Image src={Line2} alt="line" />
@@ -120,7 +127,7 @@ const Page: NextPage = () => {
             </div>
             <div
               className="w-full h-[24px] lg:h-[48px] mt-10 mb-14 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer"
-              onClick={() => setShowModal(true)}
+              onClick={onSubmit}
             >
               Set up account
             </div>

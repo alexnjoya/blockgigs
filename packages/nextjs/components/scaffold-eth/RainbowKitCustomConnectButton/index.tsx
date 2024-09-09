@@ -42,7 +42,7 @@ export const RainbowKitCustomConnectButton = () => {
                 return <WrongNetworkDropdown />;
               }
 
-              if (connected) {
+              if (connected && !localStorage.getItem("signedIn")) {
                 router.push("/profile-setup");
               }
               return (

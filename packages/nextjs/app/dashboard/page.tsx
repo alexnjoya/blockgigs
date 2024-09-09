@@ -3,9 +3,55 @@
 import Image from "next/image";
 import Link from "next/link";
 import Avatar1 from "../assets/Avartar1.png";
+import Star from "../assets/stars.png";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./_components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./_components/ui/tabs";
 import type { NextPage } from "next";
 
 const Dashboard: NextPage = () => {
+  const projects = [
+    {
+      title: "Smart Contract for Omni Bridge",
+      milestone: "2/3",
+      client: "Jacob Jones",
+    },
+    {
+      title: "Decentralized Voting System",
+      milestone: "1/3",
+      client: "Votereum Inc",
+    },
+    {
+      title: "(DAO) Governance Platform",
+      milestone: "1/3",
+      client: "DAO Innovators",
+    },
+    {
+      title: "ChainLink Ventures",
+      milestone: "3/3",
+      client: "Binance Labs",
+    },
+  ];
+
+  const reviews = [
+    {
+      review:
+        "Kovacs exceeded our expectations with the development of our decentralized voting system. He has a deep understanding of blockchain technology",
+      name: "Freida Varnes",
+      image: Avatar1,
+    },
+    {
+      review:
+        "Working with Kovacas  was a fantastic experience. He successfully built a cross-chain token swap platform that is both secure and user-friendly.",
+      name: "Kristin Watson",
+      image: Avatar1,
+    },
+    {
+      review:
+        "Kovacas played a crucial role in developing our DAO governance platform. His attention to detail and innovative solutions helped us create a robust and transparent",
+      name: "Charolette Hanlin",
+      image: Avatar1,
+    },
+  ];
   return (
     <div className="bg-[#FAFCFF] pt-10 lg:px-28">
       <h1 className=" text-[#2F66F6] text-left text-[36px] font-semibold">Dashboard</h1>
@@ -36,56 +82,123 @@ const Dashboard: NextPage = () => {
         <div className="bg-white border-[#D7D9E4] border rounded-lg shadow-md p-6">
           <h3 className="text-[#0A0F29] text-[16px] font-[500] text-left">Total ratings</h3>
           <div className="flex flex-row justify-between items-center mt-4">
-            <h3 className="text-[#0A0F29] text-[24px] text-center font-[600]">102</h3>
+            <div>
+              <Image src={Star} alt="stars" />
+            </div>
             <h3 className="text-[#0A0F29] text-[12px] text-center font-normal">3 vs last month</h3>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-row gap-10 mt-12">
-        <a href="/">
-          <h3 className="text-[#0A0F29] text-[24px] font-[600] text-center">More Details</h3>
-        </a>
-        <a href="/dashboard-projects">
-          <h3 className="text-[#696F8C] text-[24px] font-[600] text-center">All Projects</h3>
-        </a>
-        <a href="/dashboard-reviews">
-          <h3 className="text-[#696F8C] text-[24px] font-[600] text-center">Reviews</h3>
-        </a>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6 mb-10">
-        <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px]">
-            <span className="font-[600]">Pseudonymous Name:</span> Kovács Lajos
-          </p>
-          <p>
-            <span className="font-[600]">Email:</span> Kovács Lajos@gmail.com
-          </p>
-          <p>
-            <span className="font-[600]">Tags That Best Describe Skill:</span> Smart Contracts, DeFi Development, NFT
-            Integration
-          </p>
-          <p>
-            <span className="font-[600]">Skills and Talents:</span> Smart Contracts, DeFi Development, NFT Integration
-          </p>
-        </div>
+      <Tabs defaultValue="details" className="mt-12 mb-10">
+        <TabsList>
+          <TabsTrigger value="details" className="text-[24px] font-[600] text-center">
+            More Details
+          </TabsTrigger>
+          <TabsTrigger value="projects" className=" text-[24px] font-[600] text-center">
+            All Projects
+          </TabsTrigger>
+          <TabsTrigger value="reviews" className=" text-[24px] font-[600] text-center">
+            Reviews
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="details">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6">
+            <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
+              <p className="text-[#0A0F29] text-[18px]">
+                <span className="font-[600]">Pseudonymous Name:</span> Kovács Lajos
+              </p>
+              <p>
+                <span className="font-[600]">Email:</span> Kovács Lajos@gmail.com
+              </p>
+              <p>
+                <span className="font-[600]">Tags That Best Describe Skill:</span> Smart Contracts, DeFi Development,
+                NFT Integration
+              </p>
+              <p>
+                <span className="font-[600]">Skills and Talents:</span> Smart Contracts, DeFi Development, NFT
+                Integration
+              </p>
+            </div>
 
-        <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
-          <p className="text-[#0A0F29] text-[18px]">
-            <span className="font-[600]">Level of Experience:</span> Intermediate
-          </p>
-          <p>
-            <span className="font-[600]">Wallet:</span> 0x1622jduwcg7744894ihbjc4
-          </p>
-          <p>
-            <span className="font-[600]">Previous Projects:</span> Ethereum-based DeFi Platform
-          </p>
-          <p>
-            <span className="font-[600]">Description:</span> Led the development of a DeFi platform that allows users to
-            stake and earn rewards in ETH. Integrated multiple DeFi protocols for seamless interaction.
-          </p>
-        </div>
-      </div>
+            <div className="bg-white rounded-lg shadow-md px-5 pb-4 text-[#0A0F29] text-[18px]">
+              <p className="text-[#0A0F29] text-[18px]">
+                <span className="font-[600]">Level of Experience:</span> Intermediate
+              </p>
+              <p>
+                <span className="font-[600]">Wallet:</span> 0x1622jduwcg7744894ihbjc4
+              </p>
+              <p>
+                <span className="font-[600]">Previous Projects:</span> Ethereum-based DeFi Platform
+              </p>
+              <p>
+                <span className="font-[600]">Description:</span> Led the development of a DeFi platform that allows
+                users to stake and earn rewards in ETH. Integrated multiple DeFi protocols for seamless interaction.
+              </p>
+            </div>
+          </div>
+        </TabsContent>
+        <TabsContent value="projects">
+          <Table className="bg-white rounded-lg shadow-lg px-5">
+            <TableHeader>
+              <TableRow className="text-[16px] font-[500] text-[#696F8C]">
+                <TableHead className="">Project Title</TableHead>
+                <TableHead>Milestones completed</TableHead>
+                <TableHead>Client</TableHead>
+                <TableHead>Detail</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title} className="text-[16px] font-[700] text-[#0A0F29] mb-6">
+                      {project.title}
+                    </h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title} className="font-[500] text-[#0A0F29] mb-6 text-[16px]">
+                      {project.milestone}
+                    </h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title} className="font-[500] text-[#0A0F29] mb-6 text-[16px]">
+                      {project.client}
+                    </h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title} className="font-[700] text-[#2F66F6] mb-6 text-[16px] cursor-pointer">
+                      View details
+                    </h3>
+                  ))}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TabsContent>
+        <TabsContent value="reviews">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-3 mt-6">
+            {reviews.map(review => (
+              <div key={review.review} className="flex flex-col bg-white rounded-lg shadow-md px-5 py-5 text-[#0A0F29]">
+                <div>
+                  <Image src={Star} alt="img" />
+                </div>
+                <p className="flex-grow">{review.review}</p>
+                <div className="flex space-x-4 items-center pt-3">
+                  <Image src={review.image} alt="image" />
+                  <h4 className="text-[18px] font-semibold">{review.name}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
