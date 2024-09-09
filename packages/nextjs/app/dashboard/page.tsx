@@ -4,10 +4,33 @@ import Image from "next/image";
 import Link from "next/link";
 import Avatar1 from "../assets/Avartar1.png";
 import Star from "../assets/stars.png";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./_components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./_components/ui/tabs";
 import type { NextPage } from "next";
 
 const Dashboard: NextPage = () => {
+  const projects = [
+    {
+      title: "Smart Contract for Omni Bridge",
+      milestone: "2/3",
+      client: "Jacob Jones",
+    },
+    {
+      title: "Decentralized Voting System",
+      milestone: "1/3",
+      client: "Votereum Inc",
+    },
+    {
+      title: "(DAO) Governance Platform",
+      milestone: "1/3",
+      client: "DAO Innovators",
+    },
+    {
+      title: "ChainLink Ventures",
+      milestone: "3/3",
+      client: "Binance Labs",
+    },
+  ];
   return (
     <div className="bg-[#FAFCFF] pt-10 lg:px-28">
       <h1 className=" text-[#2F66F6] text-left text-[36px] font-semibold">Dashboard</h1>
@@ -46,7 +69,7 @@ const Dashboard: NextPage = () => {
         </div>
       </div>
 
-      <Tabs defaultValue="details" className="mt-12">
+      <Tabs defaultValue="details" className="mt-12 mb-10">
         <TabsList>
           <TabsTrigger value="details" className="text-[24px] font-[600] text-center">
             More Details
@@ -59,7 +82,7 @@ const Dashboard: NextPage = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="details">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mt-6">
             <div className="bg-white rounded-lg shadow-md px-5 text-[#0A0F29] text-[18px]">
               <p className="text-[#0A0F29] text-[18px]">
                 <span className="font-[600]">Pseudonymous Name:</span> Kovács Lajos
@@ -94,7 +117,42 @@ const Dashboard: NextPage = () => {
             </div>
           </div>
         </TabsContent>
-        <TabsContent value="projects">Change your password here.</TabsContent>
+        <TabsContent value="projects">
+          <Table className="bg-white rounded-lg shadow-lg px-5">
+            <TableHeader>
+              <TableRow className="text-[16px] font-[500] text-[#696F8C]">
+                <TableHead className="">Project Title</TableHead>
+                <TableHead>Milestones completed</TableHead>
+                <TableHead>Client</TableHead>
+                <TableHead>Detail</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title}>{project.title}</h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title}>{project.milestone}</h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title}>{project.client}</h3>
+                  ))}
+                </TableCell>
+                <TableCell>
+                  {projects.map(project => (
+                    <h3 key={project.title}>View details</h3>
+                  ))}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TabsContent>
         <TabsContent value="reviews">Change your password here.</TabsContent>
       </Tabs>
     </div>
