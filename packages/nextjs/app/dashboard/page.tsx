@@ -31,6 +31,27 @@ const Dashboard: NextPage = () => {
       client: "Binance Labs",
     },
   ];
+
+  const reviews = [
+    {
+      review:
+        "Kovacs exceeded our expectations with the development of our decentralized voting system. He has a deep understanding of blockchain technology",
+      name: "Freida Varnes",
+      image: Avatar1,
+    },
+    {
+      review:
+        "Working with Kovacas  was a fantastic experience. He successfully built a cross-chain token swap platform that is both secure and user-friendly.",
+      name: "Kristin Watson",
+      image: Avatar1,
+    },
+    {
+      review:
+        "Kovacas played a crucial role in developing our DAO governance platform. His attention to detail and innovative solutions helped us create a robust and transparent",
+      name: "Charolette Hanlin",
+      image: Avatar1,
+    },
+  ];
   return (
     <div className="bg-[#FAFCFF] pt-10 lg:px-28">
       <h1 className=" text-[#2F66F6] text-left text-[36px] font-semibold">Dashboard</h1>
@@ -161,7 +182,22 @@ const Dashboard: NextPage = () => {
             </TableBody>
           </Table>
         </TabsContent>
-        <TabsContent value="reviews">Change your password here.</TabsContent>
+        <TabsContent value="reviews">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-3 mt-6">
+            {reviews.map(review => (
+              <div key={review.review} className="flex flex-col bg-white rounded-lg shadow-md px-5 py-5 text-[#0A0F29]">
+                <div>
+                  <Image src={Star} alt="img" />
+                </div>
+                <p className="flex-grow">{review.review}</p>
+                <div className="flex space-x-4 items-center pt-3">
+                  <Image src={review.image} alt="image" />
+                  <h4 className="text-[18px] font-semibold">{review.name}</h4>
+                </div>
+              </div>
+            ))}
+          </div>
+        </TabsContent>
       </Tabs>
     </div>
   );
