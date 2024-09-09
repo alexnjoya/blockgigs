@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Avatar1 from "../assets/Avartar1.png";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./_components/ui/tabs";
 import type { NextPage } from "next";
 
 const Dashboard: NextPage = () => {
@@ -41,6 +42,15 @@ const Dashboard: NextPage = () => {
           </div>
         </div>
       </div>
+
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">Make changes to your account here.</TabsContent>
+        <TabsContent value="password">Change your password here.</TabsContent>
+      </Tabs>
 
       <div className="flex flex-row gap-10 mt-12">
         <a href="/">

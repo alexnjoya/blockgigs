@@ -55,7 +55,9 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.0.2",
+    "@radix-ui/react-tabs": "^1.1.0",
     "lucide-react": "^0.436.0",
-    "se-2": "file:"
+    "se-2": "file:",
+    "tailwind-merge": "^2.5.2"
   }
 }
