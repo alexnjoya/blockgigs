@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import DataTable from "../_components/table";
 import Avatar1 from "../assets/Avartar1.png";
 import type { NextPage } from "next";
 
@@ -55,7 +54,7 @@ const DashboardProjects: NextPage = () => {
         </a>
       </div>
       <div>
-        <DataTable />
+        <p>dnknndkn</p>
       </div>
     </div>
   );
