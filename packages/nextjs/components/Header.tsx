@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
@@ -23,29 +24,41 @@ export const Header = () => {
       }`}
     >
       <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
-        <a href="https://adwumapa-nextjs.vercel.app/">
+        <Link href="/">
           <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
-        </a>
+        </Link>
       </div>
 
       <ul className="hidden lg:flex gap-6 w-[511px] h-[48px] mr-[10rem] items-center">
         <li>
-          <a
-            className="font-montserrat text-[16px] text-[#2f66f6] font-extrabold leading-[24px] text-center"
-            href="#home"
+          <Link
+            className={`font-montserrat text-[16px] leading-[24px] text-center ${
+              pathname == "/" ? "text-[#2f66f6] font-extrabold" : "text-[#696f8c] font-medium"
+            }`}
+            href="/"
           >
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="font-montserrat text-[16px] font-medium text-center text-[#696f8c]" href="/dashboard">
+          <Link
+            className={`font-montserrat text-[16px] leading-[24px] text-center ${
+              pathname == "/dashboard" ? "text-[#2f66f6] font-extrabold" : "text-[#696f8c] font-medium"
+            }`}
+            href="/dashboard"
+          >
             Dashboard
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="font-montserrat text-nowrap text-[16px] font-medium text-center text-[#696f8c]" href="#browse">
+          <Link
+            className={`font-montserrat text-[16px] leading-[24px] text-center ${
+              pathname == "/browse-talents" ? "text-[#2f66f6] font-extrabold" : "text-[#696f8c] font-medium"
+            }`}
+            href="#browse"
+          >
             Browse Talents
-          </a>
+          </Link>
         </li>
         <li>
           <RainbowKitCustomConnectButton />
