@@ -1,14 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Avatar1 from "../assets/Avartar1.png";
 import Star from "../assets/stars.png";
+import RightModal from "./_components/right-modal";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./_components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./_components/ui/tabs";
 import type { NextPage } from "next";
 
 const Dashboard: NextPage = () => {
+  const [showModal, setShowModal] = useState(false);
   const projects = [
     {
       title: "Smart Contract for Omni Bridge",
@@ -173,7 +176,11 @@ const Dashboard: NextPage = () => {
                 </TableCell>
                 <TableCell>
                   {projects.map(project => (
-                    <h3 key={project.title} className="font-[700] text-[#2F66F6] mb-6 text-[16px] cursor-pointer">
+                    <h3
+                      key={project.title}
+                      onClick={() => setShowModal(true)}
+                      className="font-[700] text-[#2F66F6] mb-6 text-[16px] cursor-pointer"
+                    >
                       View details
                     </h3>
                   ))}
@@ -199,6 +206,8 @@ const Dashboard: NextPage = () => {
           </div>
         </TabsContent>
       </Tabs>
+
+      <RightModal isVisible={showModal} setShowModal={setShowModal} />
     </div>
   );
 };
