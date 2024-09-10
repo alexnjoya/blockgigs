@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Image1 from "../assets/image1.png";
 import Image2 from "../assets/image2.png";
 import Image3 from "../assets/image3.png";
@@ -51,15 +52,15 @@ const Hero = () => {
         </div>
 
         <div className="w-[368px] h-[48px] gap-6 flex justify-between items-center">
-          <a
+          <Link
             className="w-[180px] h-[43px] lg:w-[193px] lg:h-[48px] px-6 py-3 gap-2 rounded-tl-[4px] rounded-tr-none rounded-br-none rounded-bl-none bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center"
-            href="https://adwumapa-nextjs.vercel.app/profile-setup"
+            href="/talent/profile-setup"
           >
             Sign Up as Talent
-          </a>
+          </Link>
           <a
             className="w-[160px] h-[43px] lg:w-[151px] lg:h-[48px] px-6 py-3 gap-2 rounded-tl-[4px] rounded-tr-none rounded-br-none rounded-bl-none bg-[#696F8C] border border-solid border-[#D7D9E4] font-montserrat text-[14px] lg:text-base font-medium text-center leading-6 text-nowrap text-[#ffffff]"
-            href="#"
+            href="/client/profile-setup"
           >
             Hire a Talent
           </a>

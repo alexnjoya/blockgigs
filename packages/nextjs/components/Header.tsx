@@ -45,9 +45,9 @@ export const Header = () => {
         <li>
           <Link
             className={`font-montserrat text-[16px] leading-[24px] text-center ${
-              pathname == "/dashboard" ? "text-[#2f66f6] font-extrabold" : "text-[#696f8c] font-medium"
+              pathname.includes("dashboard") ? "text-[#2f66f6] font-extrabold" : "text-[#696f8c] font-medium"
             }`}
-            href="/dashboard"
+            href="/talent/dashboard"
           >
             Dashboard
           </Link>
