@@ -1,23 +1,22 @@
+// packages/subgraph/src/mapping.ts
 import { BigInt } from "@graphprotocol/graph-ts";
 import {
   PaymentProcessed as PaymentProcessedEvent,
-  PaymentWithdrawn as PaymentWithdrawnEvent,
-  EmergencyWithdrawal as EmergencyWithdrawalEvent,
   Deposit as DepositEvent,
   PaymentReleased as PaymentReleasedEvent,
   ProjectCompleted as ProjectCompletedEvent,
   MilestoneCompleted as MilestoneCompletedEvent,
   ProjectCreated as ProjectCreatedEvent,
+  MilestoneCreated as MilestoneCreatedEvent,
 } from "../generated/Adwumapa/Adwumapa";
 import {
   PaymentProcessed,
-  PaymentWithdrawn,
-  EmergencyWithdrawal,
   Deposit,
   PaymentReleased,
   ProjectCompleted,
   MilestoneCompleted,
   ProjectCreated,
+  MilestoneCreated,
   Milestone,
 } from "../generated/schema";
 
@@ -26,28 +25,6 @@ export function handlePaymentProcessed(event: PaymentProcessedEvent): void {
     event.transaction.hash.toHex() + "-" + event.logIndex.toString()
   );
   entity.recipient = event.params.recipient;
-  entity.amount = event.params.amount;
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
-  entity.save();
-}
-
-export function handlePaymentWithdrawn(event: PaymentWithdrawnEvent): void {
-  let entity = new PaymentWithdrawn(event.transaction.hash.toHex());
-  entity.recipient = event.params.recipient;
-  entity.amount = event.params.amount;
-  entity.blockNumber = event.block.number;
-  entity.blockTimestamp = event.block.timestamp;
-  entity.transactionHash = event.transaction.hash;
-  entity.save();
-}
-
-export function handleEmergencyWithdrawal(
-  event: EmergencyWithdrawalEvent
-): void {
-  let entity = new EmergencyWithdrawal(event.transaction.hash.toHex());
-  entity.to = event.params.to;
   entity.amount = event.params.amount;
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
@@ -113,6 +90,7 @@ export function handleProjectCreated(event: ProjectCreatedEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   // Handle milestones
+  
   let milestones = event.params.milestones; // Fixed property name
   let milestoneEntities: string[] = [];
   for (let i = 0; i < milestones.length; i++) {
@@ -120,14 +98,25 @@ export function handleProjectCreated(event: ProjectCreatedEvent): void {
       event.transaction.hash.toHex() + "-" + i.toString()
     );
     if (milestones[i]) {
-      // milestoneEntity.amount = milestones[i].amount;
+      // milestoneEntity.amount = milestones[i].amount; 
       // milestoneEntity.description = milestones[i].description;
-      milestoneEntity.project = entity.id;
+
       milestoneEntity.save();
       milestoneEntities.push(milestoneEntity.id);
     }
   }
   entity.milestones = milestoneEntities;
 
+  entity.save();
+}
+
+export function handleMilestoneCreated(event: MilestoneCreatedEvent): void {
+  let entity = new MilestoneCreated(
+    event.transaction.hash.toHex() + "-" + event.params.milestoneId.toString()
+  );
+  entity.client = event.params.client;
+  entity.milestoneId = event.params.milestoneId;
+  entity.amount = event.params.amount;
+  entity.description = event.params.description;
   entity.save();
 }

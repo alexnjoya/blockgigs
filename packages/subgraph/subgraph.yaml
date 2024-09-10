@@ -4,33 +4,29 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Adwumapa
-    network: optimismSepolia
+    network: base
     source:
       abi: Adwumapa
-      address: "0xB16Ec0D24672A1e6937A5F2D378255A356372924"
+      address: "0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - PaymentProcessed
-        - PaymentWithdrawn
-        - EmergencyWithdrawal
         - Deposit
         - PaymentReleased
         - ProjectCompleted
         - MilestoneCompleted
         - ProjectCreated
+        - MilestoneCreated
+        - Milestone
       abis:
         - name: Adwumapa
           file: ./abis/Adwumapa.json
       eventHandlers:
         - event: PaymentProcessed(indexed address,uint256)
           handler: handlePaymentProcessed
-        - event: PaymentWithdrawn(indexed address,uint256)
-          handler: handlePaymentWithdrawn
-        - event: EmergencyWithdrawal(indexed address,uint256)
-          handler: handleEmergencyWithdrawal
         - event: Deposit(indexed address,uint256)
           handler: handleDeposit
         - event: PaymentReleased(indexed address,indexed address,uint256)
@@ -40,6 +36,8 @@ dataSources:
         - event: MilestoneCompleted(indexed address,indexed address,uint256,uint256)
           handler: handleMilestoneCompleted
         - event: ProjectCreated(indexed
-            address,uint256,string,string,(uint256,uint256,string)[],uint256,uint256,string)
+            address,uint256,string,string,(uint256,uint256,string,bool)[],uint256,uint256,string)
           handler: handleProjectCreated
+        - event: MilestoneCreated(indexed address,uint256,uint256,string)
+          handler: handleMilestoneCreated
       file: ./src/mapping.ts

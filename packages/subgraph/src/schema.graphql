@@ -7,24 +7,6 @@ type PaymentProcessed @entity {
   transactionHash: Bytes!
 }
 
-type PaymentWithdrawn @entity {
-  id: ID!
-  recipient: Bytes!
-  amount: BigInt!
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type EmergencyWithdrawal @entity {
-  id: ID!
-  to: Bytes!
-  amount: BigInt!
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
 type Deposit @entity {
   id: ID!
   sender: Bytes!
@@ -87,11 +69,12 @@ type ProjectCreated @entity {
   milestones: [Milestone!]!
 }
 
-type MilestoneAdded @entity {
+type MilestoneCreated @entity {
   id: ID!
   client: Bytes!
-  milestoneIndex: BigInt!
+  milestoneId: BigInt!
   amount: BigInt!
+  description: String!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
