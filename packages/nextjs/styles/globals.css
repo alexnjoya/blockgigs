@@ -4,6 +4,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+:root:has(.no-doc-scroll) {
+  overflow:hidden;
+}
 
 :root,
 [data-theme] {
