@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import Notification from "./Notifications";
+import { BellDot, Menu, X } from "lucide-react";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 
 /**
@@ -12,6 +13,7 @@ import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaff
 export const Header = () => {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const toggleNavbar = () => {
     setMobileOpen(!mobileOpen);
@@ -29,7 +31,7 @@ export const Header = () => {
         </Link>
       </div>
 
-      <ul className="hidden lg:flex gap-6 w-[511px] h-[48px] mr-[10rem] items-center">
+      <ul className="hidden lg:flex gap-6  h-[48px] mr-[10rem] items-center">
         <li>
           <Link
             className={`font-montserrat text-[16px] leading-[24px] text-center ${
@@ -60,6 +62,12 @@ export const Header = () => {
             Browse Talents
           </Link>
         </li>
+        {localStorage.getItem("signedIn") && (
+          <li>
+            <BellDot onClick={() => setShowModal(true)} className="stroke-[#2F66F6] cursor-pointer" />
+          </li>
+        )}
+        <Notification isVisible={showModal} setShowModal={setShowModal} />
         <li>
           <RainbowKitCustomConnectButton />
           <FaucetButton />
