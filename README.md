@@ -46,7 +46,7 @@ Through the use of smart contracts, AdwumaPa provides a secure and transparent e
 ### Crypto Payments:
  All payments are made in cryptocurrency, mitigating volatility, and providing an accessible, stable value transfer, making it easier to convert to local currencies, thus fueling economic growth.
 
-# Milestone-Based Project Management
+### Milestone-Based Project Management
 : By breaking projects into clear milestones, we provide better oversight, timely payments, and reduced risk for all stakeholders. This system ensures that talents are compensated fairly and clients get the work they need.
 
 ### Solving the Prosperity Paradox
@@ -71,6 +71,6 @@ view on: https://sepolia-optimism.etherscan.io/
 
 Figma files: https://www.figma.com/design/R06mq4LFFKVxzYZnQuE0gQ/Adwumapa?node-id=2-2&t=jV9611htIAlDHZ3C-1
 
-Pitch Deck: https://drive.google.com/file/d/14q9S3oJsB0h0V9Us8VBOOyP_nBMio4Nt/view?usp=sharing
+Pitch Deck: https://drive.google.com/file/d/1CT1Hsg3A_BRI4Jf9oL1ornLq-rWtCEu0/view?usp=sharing
 
 The Graph Query Link: https://api.studio.thegraph.com/query/86127/adwumapa/version/latest
