@@ -62,11 +62,11 @@ export const Header = () => {
             Browse Talents
           </Link>
         </li>
-        {localStorage.getItem("signedIn") && (
-          <li>
-            <BellDot onClick={() => setShowModal(true)} className="stroke-[#2F66F6] cursor-pointer" />
-          </li>
-        )}
+
+        <li>
+          <BellDot onClick={() => setShowModal(true)} className="stroke-[#2F66F6] cursor-pointer" />
+        </li>
+
         <Notification isVisible={showModal} setShowModal={setShowModal} />
         <li>
           <RainbowKitCustomConnectButton />
