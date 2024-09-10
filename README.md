@@ -72,6 +72,10 @@ Deployed dApp: https://adwumapa-nextjs.vercel.app/
 
 Deployed contract address: 0xB16Ec0D24672A1e6937A5F2D378255A356372924
 
+
+Lisk contract address: 0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
+LiskExplorer: https://sepolia-blockscout.lisk.com
+
 view on: https://sepolia-optimism.etherscan.io/
 
 

@@ -129,6 +129,8 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       optimismSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
+      "lisk-sepolia": "123",
+      "base-sepolia": "5WKRU22UJDUAR79W3DT9VJQJ8FFM9ADR4B",
     },
 
     customChains: [
@@ -138,6 +140,22 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia-optimistic.etherscan.io/api", // Corrected API URL
           browserURL: "https://sepolia-optimistic.etherscan.io", // Corrected browser URL
+        },
+      },
+      {
+        network: "lisk-sepolia",
+        chainId: 4202,
+        urls: {
+          apiURL: "https://sepolia-blockscout.lisk.com/api",
+          browserURL: "https://sepolia-blockscout.lisk.com",
+        },
+      },
+      {
+        network: "base-sepolia",
+        chainId: 84532,
+        urls: {
+          apiURL: "https://api-sepolia.basescan.org/api",
+          browserURL: "https://sepolia.basescan.org",
         },
       },
     ],
