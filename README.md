@@ -59,15 +59,26 @@ Join us in driving innovation and creating prosperity through market creation. C
 We deployed on Base, Optimism, and Lisk because these are highly efficient Layer 2 networks known for their fast transaction speeds and low fees. This allows us to onboard our first million Web3 clients and tech talents onto AdwumaPa seamlessly. Additionally, we integrated The Graph for indexing to enhance the overall user experience.
 
 
-GitHub Link: https://github.com/alexnjoya/adwumapa.git
+GitHub Link: https://github.com/alexnjoya/ethsafari.git
 
-Deployed dApp: https://adwumapa-nextjs.vercel.app/
+Deployed dApp: https://ethsafari.vercel.app/
 
-Deployed contract address: 0xB16Ec0D24672A1e6937A5F2D378255A356372924
 
-Lisk contract address: 0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64 LiskExplorer: https://sepolia-blockscout.lisk.com
+optimism-sepolia contract address: 0xce4a441f032517a63Fc5C35E7563be16EE14F880
 
-view on: https://sepolia-optimism.etherscan.io/
+https://sepolia-optimism.etherscan.io/address/0xce4a441f032517a63Fc5C35E7563be16EE14F880
+
+
+Base-sepolia contract address: 0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275
+
+https://sepolia.basescan.org/address/0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275
+
+
+Lisk contract address: 0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
+
+https://sepolia-blockscout.lisk.com/address/0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
+LiskExplorer: https://sepolia-blockscout.lisk.com
+
 
 Figma files: https://www.figma.com/design/R06mq4LFFKVxzYZnQuE0gQ/Adwumapa?node-id=2-2&t=jV9611htIAlDHZ3C-1
 
