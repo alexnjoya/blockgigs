@@ -37,7 +37,7 @@ const FeaturedCard = ({ image, name, tags, rates, link }: FeaturedCardProps) => 
         </div>
       </div>
       <Link href={link}>
-        <div className="w-full h-[43px] lg:h-[48px] px-6 py-3 gap-2 rounded-tl-[4px] rounded-tr-none rounded-br-none rounded-bl-none bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center">
+        <div className="w-full h-[48px] px-6 py-3 gap-2 rounded-tl-[4px] rounded-tr-none rounded-br-none rounded-bl-none bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center">
           View Profile
         </div>
       </Link>
