@@ -63,6 +63,10 @@ GitHub Link: https://github.com/alexnjoya/adwumapa.git
 
 Deployed dApp: https://adwumapa-nextjs.vercel.app/
 
+sepolia-eth contract address: 0xFC9cB3Ca8F5B58fe514895cA7ab06c650115B642
+
+https://sepolia.etherscan.io/address/0xFC9cB3Ca8F5B58fe514895cA7ab06c650115B642
+
 
 optimism-sepolia contract address: 0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8
 
@@ -83,4 +87,4 @@ Figma files: https://www.figma.com/design/R06mq4LFFKVxzYZnQuE0gQ/Adwumapa?node-i
 
 Pitch Deck: https://drive.google.com/file/d/1CT1Hsg3A_BRI4Jf9oL1ornLq-rWtCEu0/view?usp=sharing
 
-The Graph Query Link: https://api.studio.thegraph.com/query/86127/adwumapa/version/latest
+The Graph Query Link: https://api.studio.thegraph.com/query/52648/adwumapa/version/latest
