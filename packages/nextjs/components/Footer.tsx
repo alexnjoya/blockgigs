@@ -11,7 +11,7 @@ export const Footer = () => {
           </h1>
           <p className="text-[18px] font-normal">Connecting Talent, Transcending Boundaries</p>
           <div>
-            <form className="max-w-md mx-auto">
+            <form className="max-w-md mx-auto px-3 md:px-0">
               <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">email</label>
               <div className="relative">
                 <input
@@ -33,8 +33,8 @@ export const Footer = () => {
         </div>
       </div>
       <hr />
-      <div className="flex justify-between items-center py-5">
-        <h2 className="font-oleo font-[700] text-[31.33px]">AdwumaPa</h2>
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center py-5">
+        <h2 className="font-oleo font-[700] text-[31.33px] px-3 md:px-0">AdwumaPa</h2>
         <div className="flex space-x-4">
           <p className="text-[16px] font-[500]">Privacy Policy</p>
           <p className="text-[16px] font-[500]">Terms and conditions</p>
