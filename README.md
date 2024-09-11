@@ -59,9 +59,9 @@ Join us in driving innovation and creating prosperity through market creation. C
 We deployed on Base, Optimism, and Lisk because these are highly efficient Layer 2 networks known for their fast transaction speeds and low fees. This allows us to onboard our first million Web3 clients and tech talents onto AdwumaPa seamlessly. Additionally, we integrated The Graph for indexing to enhance the overall user experience.
 
 
-GitHub Link: https://github.com/alexnjoya/ethsafari.git
+GitHub Link: https://github.com/alexnjoya/adwumapa.git
 
-Deployed dApp: https://ethsafari.vercel.app/
+Deployed dApp: https://adwumapa-nextjs.vercel.app/
 
 
 optimism-sepolia contract address: 0xce4a441f032517a63Fc5C35E7563be16EE14F880
