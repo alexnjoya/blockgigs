@@ -10,14 +10,12 @@ import "@nomicfoundation/hardhat-verify";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
 
-// If not set, it uses ours Alchemy's default API key.
+// If not set, it uses our Alchemy's default API key.
 // You can get your own at https://dashboard.alchemyapi.io
 const providerApiKey = process.env.ALCHEMY_API_KEY || "oKxs-03sij-U_N0iOlrSsZFr29-IqbuF";
 // If not set, it uses the hardhat account 0 private key.
 const deployerPrivateKey =
   process.env.DEPLOYER_PRIVATE_KEY ?? "2fccc2c795f87e893d2256b020a1dd70d1398589899d47c8b9f5c481c749d434";
-// If not set, it uses ours Etherscan default API key.
-// const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "DNXJA8RX2Q3VZ4URQIWP7Z68CJXQZSC6AW";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -25,7 +23,6 @@ const config: HardhatUserConfig = {
     settings: {
       optimizer: {
         enabled: true,
-        // https://docs.soliditylang.org/en/latest/using-the-compiler.html#optimizer-options
         runs: 200,
       },
     },
@@ -33,13 +30,10 @@ const config: HardhatUserConfig = {
   defaultNetwork: "localhost",
   namedAccounts: {
     deployer: {
-      // By default, it will take the first Hardhat account as the deployer
       default: 0,
     },
   },
   networks: {
-    // View the networks that are pre-configured.
-    // If the network you are looking for is not here you can add new network settings
     hardhat: {
       forking: {
         url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
@@ -53,6 +47,7 @@ const config: HardhatUserConfig = {
     sepolia: {
       url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
       accounts: [deployerPrivateKey],
+      gasPrice: 3500000000,
     },
     arbitrum: {
       url: `https://arb-mainnet.g.alchemy.com/v2/${providerApiKey}`,
@@ -118,29 +113,27 @@ const config: HardhatUserConfig = {
       url: "https://sepolia.publicgoods.network",
       accounts: [deployerPrivateKey],
     },
-    // for testnet
     "lisk-sepolia": {
       url: "https://rpc.sepolia-api.lisk.com",
       accounts: [process.env.DEPLOYER_PRIVATE_KEY as string],
       gasPrice: 1000000000,
     },
   },
-  // configuration for hardhat-verify plugin
   etherscan: {
     apiKey: {
+      sepolia: "38PFJB8PZVQEN5BUFMDVCXM97FNMR5BHJF",
       optimismSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
       "lisk-sepolia": "123",
       "base-sepolia": "5WKRU22UJDUAR79W3DT9VJQJ8FFM9ADR4B",
       arbitrumSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
     },
-
     customChains: [
       {
         network: "optimismSepolia",
         chainId: 11155420,
         urls: {
-          apiURL: "https://api-sepolia-optimistic.etherscan.io/api", // Corrected API URL
-          browserURL: "https://sepolia-optimistic.etherscan.io", // Corrected browser URL
+          apiURL: "https://api-sepolia-optimistic.etherscan.io/api",
+          browserURL: "https://sepolia-optimistic.etherscan.io",
         },
       },
       {
@@ -160,11 +153,11 @@ const config: HardhatUserConfig = {
         },
       },
       {
-        network: "arbitrumSepolia",
-        chainId: 421614,
+        network: "sepolia",
+        chainId: 11155111,
         urls: {
-          apiURL: "https://sepolia-rollup.arbitrum.io/rpc",
-          browserURL: "https://sepolia-rollup.arbitrum.io/rpc",
+          apiURL: "https://api-sepolia.etherscan.io/api",
+          browserURL: "https://sepolia.etherscan.io",
         },
       },
     ],
