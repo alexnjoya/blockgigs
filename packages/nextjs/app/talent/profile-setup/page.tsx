@@ -1,20 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Line2 from "./assets/line2.svg";
 import Line from "./assets/line.svg";
 import Modal from "./modal/modal";
+import { Chain, EnsPlugin } from "@namespace-ens/web3-plugin-ens";
 import { NextPage } from "next";
+import Web3 from "web3";
+
+// Function to resolve ENS names to addresses
+const resolveEns = async (name: any) => {
+  let address = "";
+  if (name.endsWith(".eth")) {
+    const web3 = new Web3();
+    const ensPlugin = new EnsPlugin(Chain.Mainnet);
+    web3.registerPlugin(ensPlugin);
+    address = await web3.ens.getAddress(name);
+    if (address === web3.utils.padLeft(0, 40)) {
+      address = "Invalid ENS name";
+    }
+    console.log(address);
+  }
+  return address;
+};
 
 const Page: NextPage = () => {
   const [next, setNext] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [walletInput, setWalletInput] = useState("");
+  const [resolvedAddress, setResolvedAddress] = useState("");
+
+  useEffect(() => {
+    const resolveAddress = async () => {
+      if (walletInput.endsWith(".eth")) {
+        const address = await resolveEns(walletInput);
+        setResolvedAddress(address);
+      } else {
+        setResolvedAddress(walletInput);
+      }
+    };
+    resolveAddress();
+  }, [walletInput]);
 
   const onSubmit = () => {
     localStorage.setItem("signedIn", "true");
+    localStorage.setItem("walletAddress", resolvedAddress);
     setShowModal(true);
   };
+
   return (
     <div className="pt-[50px] px-3 md:px-16 lg:px-24 w-full bg-white">
       <div className="flex flex-col justify-center items-center ">
@@ -114,9 +148,12 @@ const Page: NextPage = () => {
             <div className="mt-5">
               <label className="font-[500] pb-2">Add preferred wallets</label>
               <input
-                placeholder="Add your preferred wallet address"
+                placeholder="Add your preferred wallet address or ENS name"
                 className="w-full h-[48px] rounded-[8px] px-4 border shadow-sm"
+                value={walletInput}
+                onChange={e => setWalletInput(e.target.value)}
               />
+              {walletInput && <p className="text-sm text-gray-600 mt-2">Resolved Address: {resolvedAddress}</p>}
             </div>
             <div className="mt-5">
               <label className="font-[500] pb-2">Cryptocurrency time</label>
