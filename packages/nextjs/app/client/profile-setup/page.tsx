@@ -7,7 +7,8 @@ import { NextPage } from "next";
 const Page: NextPage = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const onSubmit = () => {
+  const onSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     localStorage.setItem("signedIn", "true");
     setShowModal(true);
   };
@@ -27,7 +28,6 @@ const Page: NextPage = () => {
             <input
               placeholder="Add a pseudonymous name"
               className="w-full h-[48px] rounded-[8px] px-4 border shadow-sm"
-              required
             />
           </div>
           <div className="mt-5">
@@ -41,7 +41,6 @@ const Page: NextPage = () => {
               id="default-search"
               className="block w-full p-4 ps-4 text-sm bg-white text-gray-900 border border-gray-300 rounded-lg"
               placeholder="Add your avatar"
-              required
             />
           </div>
 
