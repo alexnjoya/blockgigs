@@ -10,25 +10,25 @@ const Featured = () => {
       name: "Kovács Lajos",
       tags: ["Web3 development", "Smart Contract", "Project Manager"],
       rates: "0.5ETH",
-      link: "/",
+      link: "/dashboard",
     },
     {
       image: Avatar2,
       name: "Charolette Hanlin",
       tags: ["Front-end development", "Designer", "Blockchain developer"],
       rates: "0.5ETH",
-      link: "/",
+      link: "/dashboard",
     },
     {
       image: Avatar3,
       name: "Szilágyi Erik",
       tags: ["Front-end development", "Designer", "Project manager"],
       rates: "0.5ETH",
-      link: "/",
+      link: "/dashboard",
     },
   ];
   return (
-    <div className="mt-[100px] md:px-16 lg:px-24 w-full">
+    <div className="mt-[100px] px-3 md:px-16 lg:px-24 w-full">
       <div className="flex flex-col justify-center items-center ">
         <div className="text-center max-w-[448px]">
           <h2 className="text-[36px] font-[600] text-[#0A0F29]">Featured Tech Talents</h2>
