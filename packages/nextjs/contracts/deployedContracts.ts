@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   4202: {
     Adwumapa: {
-      address: "0x888e73837b8D3b6174De85566b2763321636b6D0",
+      address: "0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8",
       abi: [
         {
           anonymous: false,

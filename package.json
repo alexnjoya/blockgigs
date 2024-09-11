@@ -56,6 +56,7 @@
     "@emotion/styled": "^11.13.0",
     "@namespace-ens/web3-plugin-ens": "^1.0.9",
     "@radix-ui/react-tabs": "^1.1.0",
+    "ethers": "5.7.2",
     "ipfs-http-client": "^60.0.1",
     "lucide-react": "^0.439.0",
     "tailwind-merge": "^2.5.2",

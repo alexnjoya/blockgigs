@@ -8978,7 +8978,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^5.7.0, ethers@npm:^5.7.1, ethers@npm:^5.7.2":
+"ethers@npm:5.7.2, ethers@npm:^5.7.0, ethers@npm:^5.7.1, ethers@npm:^5.7.2":
   version: 5.7.2
   resolution: "ethers@npm:5.7.2"
   dependencies:
@@ -15513,6 +15513,7 @@ __metadata:
     "@emotion/styled": ^11.13.0
     "@namespace-ens/web3-plugin-ens": ^1.0.9
     "@radix-ui/react-tabs": ^1.1.0
+    ethers: 5.7.2
     husky: ~8.0.3
     ipfs-http-client: ^60.0.1
     lint-staged: ~13.2.2
