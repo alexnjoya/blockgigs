@@ -10833,6 +10833,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"install@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "install@npm:0.13.0"
+  checksum: 645bad1253115309c64d791c901caa8acd61a4012731015e3ee5eef88baaca026f3a48dc15a73a2827f7f5b05609804968ea1e3c6525dc0b3a21241837b9cf59
+  languageName: node
+  linkType: hard
+
 "interface-datastore@npm:^6.0.2":
   version: 6.1.1
   resolution: "interface-datastore@npm:6.1.1"
@@ -15515,6 +15522,7 @@ __metadata:
     "@radix-ui/react-tabs": ^1.1.0
     ethers: 5.7.2
     husky: ~8.0.3
+    install: ^0.13.0
     ipfs-http-client: ^60.0.1
     lint-staged: ~13.2.2
     lucide-react: ^0.439.0
