@@ -7,6 +7,461 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   4202: {
     Adwumapa: {
+      address: "0x888e73837b8D3b6174De85566b2763321636b6D0",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "Deposit",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "client",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "freelancer",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "milestoneIndex",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "MilestoneCompleted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "client",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "milestoneId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+          ],
+          name: "MilestoneCreated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "recipient",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "PaymentProcessed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "client",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "freelancer",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "PaymentReleased",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "client",
+              type: "address",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "freelancer",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "ProjectCompleted",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "client",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "id",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "amount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "description",
+                  type: "string",
+                },
+                {
+                  internalType: "bool",
+                  name: "isCompleted",
+                  type: "bool",
+                },
+              ],
+              indexed: false,
+              internalType: "struct Adwumapa.Milestone[]",
+              name: "milestones",
+              type: "tuple[]",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
+            },
+          ],
+          name: "ProjectCreated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "clientBalances",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "clientFreelancer",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "clientMilestones",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "milestoneIndex",
+              type: "uint256",
+            },
+          ],
+          name: "completeMilestone",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "completeMilestones",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "completeProject",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+          ],
+          name: "createMilestone",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
+            },
+          ],
+          name: "createProject",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "freelancer",
+              type: "address",
+            },
+          ],
+          name: "deposit",
+          outputs: [],
+          stateMutability: "payable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          name: "projects",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "title",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "startDate",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "endDate",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "revisionPolicy",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "freelancer",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "amount",
+              type: "uint256",
+            },
+          ],
+          name: "releasePayment",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
+  84532: {
+    Adwumapa: {
       address: "0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64",
       abi: [
         {
@@ -313,6 +768,13 @@ const deployedContracts = {
         },
         {
           inputs: [],
+          name: "completeMilestones",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
           name: "completeProject",
           outputs: [],
           stateMutability: "nonpayable",
@@ -453,9 +915,9 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
   },
-  84532: {
+  11155420: {
     Adwumapa: {
-      address: "0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275",
+      address: "0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8",
       abi: [
         {
           anonymous: false,
@@ -761,448 +1223,7 @@ const deployedContracts = {
         },
         {
           inputs: [],
-          name: "completeProject",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-          ],
-          name: "createMilestone",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "title",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-            {
-              internalType: "uint256",
-              name: "startDate",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "endDate",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "revisionPolicy",
-              type: "string",
-            },
-          ],
-          name: "createProject",
-          outputs: [],
-          stateMutability: "payable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-          ],
-          name: "deposit",
-          outputs: [],
-          stateMutability: "payable",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "projects",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "title",
-              type: "string",
-            },
-            {
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-            {
-              internalType: "uint256",
-              name: "startDate",
-              type: "uint256",
-            },
-            {
-              internalType: "uint256",
-              name: "endDate",
-              type: "uint256",
-            },
-            {
-              internalType: "string",
-              name: "revisionPolicy",
-              type: "string",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "releasePayment",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-      ],
-      inheritedFunctions: {},
-    },
-  },
-  11155420: {
-    Adwumapa: {
-      address: "0xce4a441f032517a63Fc5C35E7563be16EE14F880",
-      abi: [
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "sender",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "Deposit",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "milestoneIndex",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "MilestoneCompleted",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "milestoneId",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-          ],
-          name: "MilestoneCreated",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "recipient",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "PaymentProcessed",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "PaymentReleased",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "freelancer",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-          ],
-          name: "ProjectCompleted",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "client",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "amount",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "string",
-              name: "title",
-              type: "string",
-            },
-            {
-              indexed: false,
-              internalType: "string",
-              name: "description",
-              type: "string",
-            },
-            {
-              components: [
-                {
-                  internalType: "uint256",
-                  name: "id",
-                  type: "uint256",
-                },
-                {
-                  internalType: "uint256",
-                  name: "amount",
-                  type: "uint256",
-                },
-                {
-                  internalType: "string",
-                  name: "description",
-                  type: "string",
-                },
-                {
-                  internalType: "bool",
-                  name: "isCompleted",
-                  type: "bool",
-                },
-              ],
-              indexed: false,
-              internalType: "struct Adwumapa.Milestone[]",
-              name: "milestones",
-              type: "tuple[]",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "startDate",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "endDate",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "string",
-              name: "revisionPolicy",
-              type: "string",
-            },
-          ],
-          name: "ProjectCreated",
-          type: "event",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "clientBalances",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          name: "clientFreelancer",
-          outputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "address",
-              name: "",
-              type: "address",
-            },
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          name: "clientMilestones",
-          outputs: [
-            {
-              internalType: "uint256",
-              name: "",
-              type: "uint256",
-            },
-          ],
-          stateMutability: "view",
-          type: "function",
-        },
-        {
-          inputs: [
-            {
-              internalType: "uint256",
-              name: "milestoneIndex",
-              type: "uint256",
-            },
-          ],
-          name: "completeMilestone",
+          name: "completeMilestones",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",

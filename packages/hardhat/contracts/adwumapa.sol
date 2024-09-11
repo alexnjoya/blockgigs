@@ -57,7 +57,8 @@ contract Adwumapa is ReentrancyGuard {
         clientFreelancer[msg.sender] = address(0);
         payable(freelancer).transfer(amount);
         emit ProjectCompleted(msg.sender, freelancer, amount);
-        emit PaymentReleased(msg.sender, freelancer, amount); }
+        emit PaymentReleased(msg.sender, freelancer, amount);
+    }
 
     // Function to release payment when client is satisfied
     function releasePayment(address freelancer, uint256 amount) external nonReentrant {
@@ -70,20 +71,6 @@ contract Adwumapa is ReentrancyGuard {
         emit PaymentReleased(msg.sender, freelancer, amount);
     }
 
-    // Function to mark milestone as complete and release payment
-    function completeMilestone(uint256 milestoneIndex) external nonReentrant {
-        address freelancer = clientFreelancer[msg.sender];
-        uint256 amount = clientMilestones[msg.sender][milestoneIndex];
-
-        require(freelancer != address(0), "No freelancer assigned");
-        require(milestoneIndex < clientMilestones[msg.sender].length, "Invalid milestone index");
-        require(amount > 0, "No funds to release");
-
-        clientMilestones[msg.sender][milestoneIndex] = 0;
-        payable(freelancer).transfer(amount);
-        emit MilestoneCompleted(msg.sender, freelancer, milestoneIndex, amount);
-    }
-
     function createProject(
         uint256 amount,
         string memory title,
@@ -93,8 +80,7 @@ contract Adwumapa is ReentrancyGuard {
         string memory revisionPolicy
     ) external payable nonReentrant {
         require(amount > 0, "Amount must be greater than 0");
-        require(msg.value == amount, "Sent value must match the project amount");
-
+        
         Project storage newProject = projects[msg.sender]; // Create a new project for the client
         newProject.amount = amount;
         newProject.title = title;
@@ -110,12 +96,9 @@ contract Adwumapa is ReentrancyGuard {
     // Function to create a milestone for an existing project
     function createMilestone(uint256 amount, string memory description) external {
         require(amount > 0, "Amount must be greater than 0");
-        require(clientFreelancer[msg.sender] != address(0), "No freelancer assigned");
         require(projects[msg.sender].amount > 0, "No project found for this client"); // Ensure a project exists
 
-        // Ensure the project exists and is associated with the client
         Project storage project = projects[msg.sender];
-        require(project.amount > 0, "No project found for this client"); // Ensure a project exists
 
         // Check that the total milestone amounts do not exceed the project amount
         uint256 totalMilestoneAmount = 0;
@@ -124,8 +107,11 @@ contract Adwumapa is ReentrancyGuard {
         }
         require(totalMilestoneAmount + amount <= project.amount, "Total milestone amounts exceed project amount");
 
+        // Assign a new milestone ID based on the current length of the milestones array
+        uint256 newMilestoneId = project.milestones.length;
+
         Milestone memory newMilestone = Milestone({
-            id: project.milestones.length,
+            id: newMilestoneId,
             amount: amount,
             description: description,
             isCompleted: false
@@ -133,5 +119,46 @@ contract Adwumapa is ReentrancyGuard {
 
         project.milestones.push(newMilestone); 
         emit MilestoneCreated(msg.sender, newMilestone.id, amount, description);
+    }
+
+    // Function to mark milestone as complete and release payment
+    function completeMilestone(uint256 milestoneIndex) external nonReentrant {
+        address freelancer = clientFreelancer[msg.sender];
+        Project storage project = projects[msg.sender];
+
+        require(milestoneIndex < project.milestones.length, "Invalid milestone index");
+
+        Milestone storage milestone = project.milestones[milestoneIndex];
+        require(!milestone.isCompleted, "Milestone already completed");
+        require(clientBalances[msg.sender] >= milestone.amount, "Insufficient balance");
+
+        milestone.isCompleted = true;
+        clientBalances[msg.sender] -= milestone.amount;
+        payable(freelancer).transfer(milestone.amount);
+        emit MilestoneCompleted(msg.sender, freelancer, milestoneIndex, milestone.amount);
+    }
+
+    // Function to check and release funds for completed milestones
+    function completeMilestones() external nonReentrant {
+        address freelancer = clientFreelancer[msg.sender];
+        Project storage project = projects[msg.sender];
+
+        require(freelancer != address(0), "No freelancer assigned");
+        require(project.amount > 0, "No project found for this client");
+
+        uint256 totalReleased = 0;
+
+        for (uint256 i = 0; i < project.milestones.length; i++) {
+            Milestone storage milestone = project.milestones[i];
+            if (milestone.isCompleted && clientBalances[msg.sender] >= milestone.amount) {
+                clientBalances[msg.sender] -= milestone.amount;
+                totalReleased += milestone.amount;
+                emit MilestoneCompleted(msg.sender, freelancer, i, milestone.amount);
+            }
+        }
+
+        require(totalReleased > 0, "No funds to release");
+        payable(freelancer).transfer(totalReleased);
+        emit PaymentReleased(msg.sender, freelancer, totalReleased);
     }
 }

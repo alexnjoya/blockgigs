@@ -64,20 +64,19 @@ GitHub Link: https://github.com/alexnjoya/adwumapa.git
 Deployed dApp: https://adwumapa-nextjs.vercel.app/
 
 
-optimism-sepolia contract address: 0xce4a441f032517a63Fc5C35E7563be16EE14F880
+optimism-sepolia contract address: 0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8
 
-https://sepolia-optimism.etherscan.io/address/0xce4a441f032517a63Fc5C35E7563be16EE14F880
-
-
-Base-sepolia contract address: 0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275
-
-https://sepolia.basescan.org/address/0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275
+https://sepolia-optimism.etherscan.io/address/0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8
 
 
-Lisk contract address: 0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
+Base-sepolia contract address: 0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
 
-https://sepolia-blockscout.lisk.com/address/0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
-LiskExplorer: https://sepolia-blockscout.lisk.com
+https://sepolia.basescan.org/address/0x1C935CBe84A4cA69a137eF82AF4f99ee7A359c64
+
+
+Lisk contract address: 0x888e73837b8D3b6174De85566b2763321636b6D0
+
+https://sepolia-blockscout.lisk.com/address/0x888e73837b8D3b6174De85566b2763321636b6D0#code
 
 
 Figma files: https://www.figma.com/design/R06mq4LFFKVxzYZnQuE0gQ/Adwumapa?node-id=2-2&t=jV9611htIAlDHZ3C-1
