@@ -35,22 +35,24 @@ const Dashboard: NextPage = () => {
     },
   ];
   return (
-    <div className="bg-[#FAFCFF] pt-10 lg:px-28">
+    <div className="bg-[#FAFCFF] pt-10 px-3 lg:px-28">
       <h1 className=" text-[#2F66F6] text-left text-[36px] font-semibold">Dashboard</h1>
-      <div className="flex space-x-4 items-center pt-8">
+      <div className="flex flex-col md:flex-row space-x-4 items-center pt-8">
         <Image src={Avatar1} alt="image" />
         <h4 className="text-[18px] font-semibold">Kovács Lajos</h4>
-        <Link href="/project-contract">
-          <div className="w-full cursor-pointer h-[43px] lg:h-[48px] px-6 py-3 gap-2 rounded-[4px] bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center">
-            Hire
-          </div>
-        </Link>
-        <div>
-          <div
-            onClick={() => setShowRevModal(true)}
-            className="w-full h-[43px] cursor-pointer lg:h-[48px] px-6 py-3 gap-2 rounded-[4px] bg-[#696F8C] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center"
-          >
-            Leave a review
+        <div className="flex space-x-3">
+          <Link href="/project-contract">
+            <div className="w-full cursor-pointer h-[48px] px-6 py-3 gap-2 rounded-[4px] bg-[#2F66F6] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center">
+              Hire
+            </div>
+          </Link>
+          <div>
+            <div
+              onClick={() => setShowRevModal(true)}
+              className="w-full cursor-pointer h-[48px] px-6 py-3 gap-2 rounded-[4px] bg-[#696F8C] font-montserrat font-medium text-[14px] lg:text-[16px] leading-6 text-nowrap text-[#ffffff] text-center"
+            >
+              Leave a review
+            </div>
           </div>
         </div>
       </div>

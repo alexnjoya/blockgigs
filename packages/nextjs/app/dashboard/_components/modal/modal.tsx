@@ -41,7 +41,7 @@ const Modal = ({ isVisible, setShowModal }: Props) => {
 
               <div
                 onClick={() => setShowModal(false)}
-                className="w-full h-[24px] lg:h-[48px] mt-5 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer"
+                className="w-full h-[48px] mt-5 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer"
               >
                 Submit review
               </div>

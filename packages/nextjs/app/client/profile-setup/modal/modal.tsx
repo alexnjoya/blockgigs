@@ -35,7 +35,7 @@ const Modal = ({ isVisible, setShowModal }: Props) => {
             <div className="max-w-[451px] py-14">
               <h3 className="text-[24px] font-semibold text-center">You have successfully created your profile</h3>
               <Link href="/client/dashboard">
-                <div className="w-full h-[24px] lg:h-[48px] mt-10 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer">
+                <div className="w-full h-[48px] mt-10 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer">
                   View profile
                 </div>
               </Link>

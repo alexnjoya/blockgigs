@@ -22,11 +22,11 @@ const RightModal = ({ isVisible, setShowModal }: Props) => {
     <div
       onClick={handleClose}
       id="wrapper"
-      className="no-doc-scroll fixed w-full inset-0 bg-black bg-opacity-30 z-50 flex justify-center items-center"
+      className="no-doc-scroll fixed w-full inset-0 bg-black bg-opacity-30 z-50 md:flex justify-center items-center"
     >
       <div className="w-full flex flex-col">
         <div className="w-full flex justify-end h-screen items-center text-[#0A0F29]">
-          <div className="bg-white w-[50%] h-screen overflow-y-scroll py-14 px-8 flex flex-col">
+          <div className="bg-white w-full md:w-[50%] h-screen overflow-y-scroll py-14 px-8 flex flex-col">
             <button
               onClick={() => setShowModal(false)}
               className="text-black  font-bold place-self-end -mt-5 mb-5 px-8"

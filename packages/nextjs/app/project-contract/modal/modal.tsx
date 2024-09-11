@@ -36,7 +36,7 @@ const Modal = ({ isVisible, setShowModal }: Props) => {
               <h3 className="text-[24px] font-semibold text-center">Project contract successfully sent</h3>
               <p>You will be notified when it is approved</p>
               <Link href="/">
-                <div className="w-full h-[24px] lg:h-[48px] mt-10 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer">
+                <div className="w-full h-[48px] mt-10 px-6 py-3  bg-[#2F66F6] font-medium text-[14px] lg:text-[16px] text-nowrap text-[#ffffff] text-center cursor-pointer">
                   Go to homepage
                 </div>
               </Link>

@@ -4,7 +4,7 @@ import Howimage2 from "../assets/howimage2.png";
 
 const HowItWorks = () => {
   return (
-    <div className="mt-[100px] md:px-16 lg:px-24 w-full mb-[50px]">
+    <div className="mt-[100px] px-3 md:px-16 lg:px-24 w-full mb-[50px]">
       <div className="flex flex-col justify-center items-center ">
         <div className="text-center max-w-[448px]">
           <h2 className="text-[36px] font-[600] text-[#0A0F29]">How AdwumaPa works</h2>
@@ -15,11 +15,11 @@ const HowItWorks = () => {
       </div>
 
       <div className="mt-16">
-        <div className="flex items-center justify-around space-x-16">
+        <div className="flex flex-col md:flex-row items-center justify-around md:space-x-16">
           <div>
             <Image src={Howimage1} alt="img" />
           </div>
-          <div className="max-w-[572px]">
+          <div className="max-w-[572px] mt-3 md:mt-0">
             <h3 className="text-[24px] font-semibold text-[#0A0F29]">Create Your Profile, work and get paid</h3>
             <p className="text-[18px] font-normal text-[#0A0F29]">
               Set up a pseudonymous profile, showcase your skills, and unlock global opportunities—get hired and paid
@@ -28,7 +28,7 @@ const HowItWorks = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-around space-x-16 mt-32">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-around md:space-x-16 mt-32">
           <div className="max-w-[572px]">
             <h3 className="text-[24px] font-semibold text-[#0A0F29]">Find or Post Projects</h3>
             <p className="text-[18px] font-normal text-[#0A0F29]">
@@ -36,7 +36,7 @@ const HowItWorks = () => {
               payments, all powered by secure smart contracts.
             </p>
           </div>
-          <div>
+          <div className="mb-3 md:mt-0">
             <Image src={Howimage2} alt="img" />
           </div>
         </div>
