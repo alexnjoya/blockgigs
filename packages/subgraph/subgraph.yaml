@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Adwumapa
-    network: base
+    network: sepolia
     source:
       abi: Adwumapa
       address: "0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275"

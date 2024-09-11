@@ -131,6 +131,7 @@ const config: HardhatUserConfig = {
       optimismSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
       "lisk-sepolia": "123",
       "base-sepolia": "5WKRU22UJDUAR79W3DT9VJQJ8FFM9ADR4B",
+      arbitrumSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
     },
 
     customChains: [
@@ -156,6 +157,14 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-sepolia.basescan.org/api",
           browserURL: "https://sepolia.basescan.org",
+        },
+      },
+      {
+        network: "arbitrumSepolia",
+        chainId: 421614,
+        urls: {
+          apiURL: "https://sepolia-rollup.arbitrum.io/rpc",
+          browserURL: "https://sepolia-rollup.arbitrum.io/rpc",
         },
       },
     ],
