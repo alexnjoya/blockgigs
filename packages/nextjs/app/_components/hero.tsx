@@ -8,7 +8,7 @@ import Stars from "../assets/stars.png";
 
 const Hero = () => {
   return (
-    <section className="w-full h-[600px] bg-gradient-to-b from-[#ECF3FF] to-[#FFFFFF] flex flex-col lg:flex-row lg:justify-between items-center">
+    <section className="w-full h-[600px] bg-gradient-to-b from-[#ECF3FF] to-[#FFFFFF] flex flex-col md:flex-row md:justify-between items-center">
       {/*Left div*/}
       <div className="hidden md:flex flex-col items-center ml-0 lg:ml-[11rem] gap-1 lg:gap-8">
         <div className=" mt-[5rem] lg:mt-[-5rem]">

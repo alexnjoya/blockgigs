@@ -21,13 +21,13 @@ export const Header = () => {
 
   return (
     <nav
-      className={`w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center ${
+      className={`w-full h-full sticky top-0 z-50 py-[30px] flex justify-between items-center px-3 md:px-0 ${
         pathname == "/dashboard" ? "bg-white shadow-sm" : "bg-[#ECF3FF]"
       }`}
     >
-      <div className="w-[176px] h-[47px] flex justify-center items-end ml-[9rem]">
+      <div className="md:w-[176px] md:h-[47px] flex justify-center items-end md:ml-[9rem]">
         <Link href="/">
-          <h1 className="font-oleo font-bold text-[31.33px] leading-[47px] text-[#2f66f6]">AdwumaPa</h1>
+          <h1 className="font-oleo font-bold text-[31.33px] text-[#2f66f6]">AdwumaPa</h1>
         </Link>
       </div>
 
