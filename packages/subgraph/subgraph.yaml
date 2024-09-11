@@ -4,10 +4,10 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Adwumapa
-    network: sepolia
+    network: optimism-sepolia
     source:
       abi: Adwumapa
-      address: "0xa41B2958d2EbA21CD7bDAAb354026b57ceB8B275"
+      address: "0x1b59e489D5A8F9a4148091a3eAF9a515A93574a8"
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -35,8 +35,7 @@ dataSources:
           handler: handleProjectCompleted
         - event: MilestoneCompleted(indexed address,indexed address,uint256,uint256)
           handler: handleMilestoneCompleted
-        - event: ProjectCreated(indexed
-            address,uint256,string,string,(uint256,uint256,string,bool)[],uint256,uint256,string)
+        - event: ProjectCreated(indexed address,uint256,string,string,(uint256,uint256,string,bool)[],uint256,uint256,string)
           handler: handleProjectCreated
         - event: MilestoneCreated(indexed address,uint256,uint256,string)
           handler: handleMilestoneCreated

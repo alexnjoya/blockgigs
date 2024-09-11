@@ -47,13 +47,6 @@ type MilestoneCompleted @entity {
   transactionHash: Bytes!
 }
 
-type Milestone @entity {
-  id: ID!
-  amount: BigInt!
-  description: String!
-  project: ProjectCreated!
-}
-
 type ProjectCreated @entity {
   id: ID!
   client: Bytes!
@@ -66,7 +59,14 @@ type ProjectCreated @entity {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
-  milestones: [Milestone!]!
+  milestones: [String!]!
+}
+
+type Milestone @entity {
+  id: ID!
+  amount: BigInt!
+  description: String!
+  isCompleted: Boolean!
 }
 
 type MilestoneCreated @entity {
@@ -75,7 +75,4 @@ type MilestoneCreated @entity {
   milestoneId: BigInt!
   amount: BigInt!
   description: String!
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
 }

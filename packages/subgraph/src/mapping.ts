@@ -90,17 +90,16 @@ export function handleProjectCreated(event: ProjectCreatedEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   // Handle milestones
-  
-  let milestones = event.params.milestones; // Fixed property name
+  let milestones = event.params.milestones;
   let milestoneEntities: string[] = [];
   for (let i = 0; i < milestones.length; i++) {
     let milestoneEntity = new Milestone(
       event.transaction.hash.toHex() + "-" + i.toString()
     );
     if (milestones[i]) {
-      // milestoneEntity.amount = milestones[i].amount; 
+      // milestoneEntity.id = milestones[i].id.toString();
+      // milestoneEntity.amount = milestones[i].amount;
       // milestoneEntity.description = milestones[i].description;
-
       milestoneEntity.save();
       milestoneEntities.push(milestoneEntity.id);
     }
