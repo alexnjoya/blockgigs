@@ -1,4 +1,5 @@
 # Welcome to Scaffold-ETH 2 Contributing Guide
+<!-- adwumapa -->
 
 Thank you for investing your time in contributing to Scaffold-ETH 2!
 
