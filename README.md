@@ -61,7 +61,8 @@ We deployed on Base, Optimism, and Lisk because these are highly efficient Layer
 
 GitHub Link: https://github.com/alexnjoya/adwumapa.git
 
-Deployed dApp: https://adwumapa-nextjs.vercel.app/
+Vercel_Deployment_link: https://adwumapa-nextjs.vercel.app/
+Fleek_Deployment_link: https://low-australia-whining.on-fleek.app/
 
 sepolia-eth contract address: 0xFC9cB3Ca8F5B58fe514895cA7ab06c650115B642
 
