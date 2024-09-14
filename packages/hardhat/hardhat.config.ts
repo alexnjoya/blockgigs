@@ -115,7 +115,9 @@ const config: HardhatUserConfig = {
     },
     "lisk-sepolia": {
       url: "https://rpc.sepolia-api.lisk.com",
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY as string],
+      accounts: [
+        process.env.DEPLOYER_PRIVATE_KEY ?? "2fccc2c795f87e893d2256b020a1dd70d1398589899d47c8b9f5c481c749d434",
+      ],
       gasPrice: 1000000000,
     },
   },
@@ -125,7 +127,6 @@ const config: HardhatUserConfig = {
       optimismSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
       "lisk-sepolia": "123",
       "base-sepolia": "5WKRU22UJDUAR79W3DT9VJQJ8FFM9ADR4B",
-      arbitrumSepolia: "215JKMGCXZNFM35YU7BBC8E1NX4AGS3B2M",
     },
     customChains: [
       {
