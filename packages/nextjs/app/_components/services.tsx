@@ -25,7 +25,7 @@ const Services = () => {
     <div className="mt-[50px] md:px-16 lg:px-24 w-full">
       <div className="flex flex-col justify-center items-center">
         <div className="text-center max-w-[460px]">
-          <h2 className="text-[36px] font-[600] text-[#0A0F29]">Why Choose AdwumPa?</h2>
+          <h2 className="text-[36px] font-[600] text-[#0A0F29]">Why Choose Blockgigs?</h2>
           <p className="text-[18px] font-normal">
             Find top African tech talents, hire anonymously, and pay securely in crypto.
           </p>
