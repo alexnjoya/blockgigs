@@ -32,7 +32,7 @@ const Featured = () => {
       <div className="flex flex-col justify-center items-center ">
         <div className="text-center max-w-[448px]">
           <h2 className="text-[36px] font-[600] text-[#0A0F29]">Featured Tech Talents</h2>
-          <p className="text-[18px] font-normal">Browse through series of tech talents here on AdwumaPa</p>
+          <p className="text-[18px] font-normal">Browse through series of tech talents here on Blockgigs</p>
         </div>
       </div>
 
