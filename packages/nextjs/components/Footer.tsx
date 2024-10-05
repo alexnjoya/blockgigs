@@ -34,7 +34,7 @@ export const Footer = () => {
       </div>
       <hr />
       <div className="flex flex-col-reverse md:flex-row justify-between items-center py-5">
-        <h2 className="font-oleo font-[700] text-[31.33px] px-3 md:px-0">AdwumaPa</h2>
+        <h2 className="font-oleo font-[700] text-[31.33px] px-3 md:px-0">Blockgigs</h2>
         <div className="flex space-x-4">
           <p className="text-[16px] font-[500]">Privacy Policy</p>
           <p className="text-[16px] font-[500]">Terms and conditions</p>

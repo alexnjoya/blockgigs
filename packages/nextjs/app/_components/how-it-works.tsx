@@ -7,7 +7,7 @@ const HowItWorks = () => {
     <div className="mt-[100px] px-3 md:px-16 lg:px-24 w-full mb-[50px]">
       <div className="flex flex-col justify-center items-center ">
         <div className="text-center max-w-[448px]">
-          <h2 className="text-[36px] font-[600] text-[#0A0F29]">How AdwumaPa works</h2>
+          <h2 className="text-[36px] font-[600] text-[#0A0F29]">How Blockgigs works</h2>
           <p className="text-[18px] font-normal">
             Adwuma offers a use-frendly interface. Very simple and easy to navigate
           </p>
