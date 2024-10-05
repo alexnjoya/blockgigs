@@ -1,5 +1,5 @@
 
-## blockgigs
+## Blockgigs
 
 Empowering African Tech Talent Through Blockchain Innovation - A Solution to the Prosperity Paradox
 
