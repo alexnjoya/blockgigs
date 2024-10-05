@@ -27,7 +27,7 @@ export const Header = () => {
     >
       <div className="md:w-[176px] md:h-[47px] flex justify-center items-end md:ml-[9rem]">
         <Link href="/">
-          <h1 className="font-oleo font-bold text-[31.33px] text-[#2f66f6]">AdwumaPa</h1>
+          <h1 className="font-oleo font-bold text-[31.33px] text-[#2f66f6]">Blockgigs</h1>
         </Link>
       </div>
 
